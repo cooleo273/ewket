@@ -1,0 +1,219 @@
+.posts{
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+}
+
+.first_name{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+.student-name-container{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    align-items: center;
+}
+.student-name-container button{
+   margin: 1rem;
+   
+}
+.student-name-container p{
+    flex: 1;
+    text-align: center;
+}
+.AddStudentsContainer{
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 4rem;
+}
+
+input{
+    margin: 1rem 0;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+button{
+    margin-top: 2rem;
+    height: 2rem;
+    background: #79a2f2;
+    border: none;
+    color: white;
+}
+
+span{
+    color: red;
+}
+.post-objects-container{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    text-align: center;
+    flex: 1;
+    margin: 4%;
+    margin-bottom: 3%;
+}
+.post-objects-container-one{
+    display: flex;
+    flex: 1;
+}
+
+.post-objects-container-two{
+    flex: 1;
+}
+.grade-section{
+    margin: 4%;
+    margin-top: 2%;
+}
+
+.objects-container{
+    display: flex;
+    flex-direction: column;
+}
+.addGradesContainer{
+    display: flex;
+    flex-direction: column;
+    
+}
+.addGradesContainer input{
+    width: 15%;
+}
+
+.addGradesContainer button{
+    width: 15%;
+    margin-top: 1rem;
+}
+.home-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+}
+.welcome{
+    display: flex;
+}
+.bfwobenqkdno{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 4rem 20rem;
+}
+.message{
+    display: flex;
+    flex-direction: column;
+}
+.image-container img{
+    object-fit: contain;
+    width: 100%;
+    margin-top: -15rem;
+}
+.image-container{
+    width: 100%;
+}
+.links-container a{
+    border: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 1.7rem 0px;
+    width: 10rem;
+    font-weight: bold;
+
+}
+.links-container p{
+    display: flex;
+   
+    margin-left: 2rem;
+}
+
+.img-elec{
+    width: 50%;
+    flex: 1;
+}
+.elec-department{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+.txt-elec{
+    flex: 1;
+    padding: 2rem 3rem 0 6rem;
+}
+.img-elec img{
+    width: 100%;
+    
+}
+.txt-elec h1{
+    font-size: 1.6rem;
+}
+
+
+
+.img-mech{
+    width: 50%;
+    flex: 1;
+}
+.mech-department{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-top: 7rem;
+}
+.txt-mech{
+    flex: 1;
+    padding: 2rem 3rem 0 6rem;
+}
+.img-mech img{
+    width: 100%;
+    
+}
+.txt-mech h1{
+    font-size: 1.6rem;
+}
+.About a{
+    margin-left: 2rem;
+}
+.header{
+   
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    
+}
+.student-container{
+    display: flex;
+    margin-top: 8rem;
+    flex-direction: column;
+}
+
+.latest-news{
+    width:50%;
+    margin-left: 12rem;
+    display: flex;
+    margin-top: 3rem;
+
+}
+
+.latest-news img{
+    width: 50%;
+}
+.department-container h1{
+    margin-top: 10rem;
+}
+.ha{
+    margin-left: 1rem;
+}
