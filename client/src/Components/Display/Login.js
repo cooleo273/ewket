@@ -1,11 +1,12 @@
 import React , {useState} from 'react'
 import axios from "axios"
+import {Navigate, useNavigate} from 'react-router-dom'
 
 function Login() {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  
+  let navigate = useNavigate();
   const login = () =>{
     const data = {username: username, password:password}
     axios.post("http://localhost:3001/auth/login", data).then((response)=>{
@@ -14,6 +15,7 @@ function Login() {
       }
       else{
         sessionStorage.setItem("accessToken", response.data)
+        navigate('/')
       }
       
     },[])

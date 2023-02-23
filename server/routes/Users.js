@@ -40,7 +40,7 @@ router.post("/login", async (req, res) => {
     if (!match) res.json({ error: "wrong username and password combination" });
     const accessToken = sign(
       { username: user.username, id: user.id },
-      "importantssecret"
+      "importantsecret"
     );
     res.json(accessToken);
   });

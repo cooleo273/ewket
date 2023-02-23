@@ -23,10 +23,21 @@ function Post() {
   
 
   const addGrade = ()=>{
-    axios.post("http://localhost:3001/grades", {grade: newGrade, UserId: id}).then((response)=>{
-      const gradeToAdd = {grade:newGrade};
+    axios.post("http://localhost:3001/grades", {grade: newGrade, UserId: id},
+    {
+      headers:{
+        accessToken: sessionStorage.getItem("accessToken")
+      }
+    }).then((response)=>{
+      if(response.data.error){
+        alert(response.data.error)
+      }
+      else{
+        const gradeToAdd = {grade:newGrade};
       setGrades([...grades, gradeToAdd]);
       setNewGrade("")
+    }
+      
     })
   }
  
