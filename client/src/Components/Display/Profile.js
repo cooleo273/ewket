@@ -9,12 +9,14 @@ function Profile() {
     const [role, setRole]  = useState("")
 
     useEffect(()=>{
-        const header = {
-            
+        const headers = {
+            accessToken: localStorage.getItem("accessToken"),
         }
-        axios.get(`http://localhost:3001/auth/basicInfo/${id}`).then((response)=>{
+
+        axios.get(`http://localhost:3001/auth/user`, { headers:headers }).then((response)=>{
             setFirstname(response.data.first_name)
             setLastname(response.data.last_name)
+            setRole(response.data.role)
         })
     })
   return (
