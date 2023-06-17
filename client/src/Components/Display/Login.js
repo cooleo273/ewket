@@ -22,7 +22,7 @@ function Login() {
       else{
         localStorage.setItem("accessToken", response.data)
         setAuthState(true)
-        navigate(`/profile}`)
+        navigate(`/profile`)
         
       }
       

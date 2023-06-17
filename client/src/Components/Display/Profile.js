@@ -24,6 +24,8 @@ function Profile() {
         <div className='basicInfo'>
             {""}
             <h1>Hello</h1>
+            <p>{first_name} {last_name}</p>
+            <p>{role}</p>
         </div>
         <div className='listOfPosts'></div>
 
