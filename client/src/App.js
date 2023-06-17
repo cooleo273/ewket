@@ -15,7 +15,8 @@ import { AuthContext, UserContexct, UserContext } from "./helpers/AuthContext";
 import { useState } from "react";
 
 function App() {
-  const [user, setAuthState] = useState(localStorage.getItem('user') ?? null);
+  debugger
+  const [user, setAuthState] = useState(JSON.parse(localStorage.getItem('user')));
   return (
     <div className="App">
       <AuthContext.Provider value={{ user, setAuthState }}>

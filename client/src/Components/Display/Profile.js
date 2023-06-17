@@ -4,6 +4,9 @@ import axios from "axios"
 
 function Profile() {
     debugger;
+    const [authState, setAuthState] = useState(
+        JSON.parse(localStorage.getItem("user"))
+      );
     const [first_name,setFirstname] = useState("")
     const [last_name,setLastname] = useState("")
     const [role, setRole]  = useState("")
@@ -19,6 +22,12 @@ function Profile() {
             setRole(response.data.role)
         })
     },[])
+    const logout = () => {
+        localStorage.removeItem("accessToken");
+        setAuthState(false);
+      
+        
+      }
   return (
     <div className='ProfilePageContainer'>
         <div className='basicInfo'>
@@ -26,6 +35,7 @@ function Profile() {
             
             <p>{first_name} {last_name}</p>
             <p>{role}</p>
+            <button className="btn-logout" onClick={logout}>Logout</button>
         </div>
    
 
