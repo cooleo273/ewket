@@ -31,10 +31,12 @@ function AddStudents ()  {
         last_name: '',
         username:'',
         password:'',
+        role:'',
+        gender:''
       }}
       onSubmit={async (value) => {
         axios.post("http://localhost:3001/auth", value).then((response)=>{
-          console.log(value);
+          navigate('/')
         })
 
       }}
@@ -60,6 +62,22 @@ function AddStudents ()  {
           <label htmlFor="password">Password</label>
           <ErrorMessage name="password" component="span" />
           <Field name="password" placeholder="ABC"  type="password"/>
+
+          <label htmlFor="role">Role</label>
+          <ErrorMessage name="role" component="span" />
+          <Field name="role" placeholder="select" component='select'>
+              <option value=''>select options</option>
+              <option value='student'>Student</option>
+              <option value='teacher'>Teacher</option>
+          </Field>
+
+          <label htmlFor="gender">Gender</label>
+          <ErrorMessage name="gender" component="span" />
+          <Field name="gender" placeholder="select options" component='select'>
+            <option value=''>select options</option>
+              <option value='male'>Male</option>
+              <option value='female'>Female</option>
+          </Field>
 
           <button type="submit" disabled={isSubmitting}>
             Register

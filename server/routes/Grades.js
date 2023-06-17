@@ -9,8 +9,10 @@ router.get("/:userId", async(req, res)=>{
     const grades = await Grades.findAll({where:{UserId:userId}})
     res.json(grades)
 })
-router.post("/",  async (req, res)=>{
+router.post("/", validateToken, async (req, res)=>{
     const grade = req.body;
+    const username = req.user.username;
+    grade.username = username;
     await Grades.create(grade);
     res.json(grade)
 })

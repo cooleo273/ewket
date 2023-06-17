@@ -17,6 +17,16 @@ module.exports = (sequelize, DataTypes) =>{
         password:{
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        role:{
+          
+                type: DataTypes.ENUM("student", "teacher"),
+                allowNull: false,
+            
+        },
+        gender:{
+            type: DataTypes.ENUM('male','female'),
+            allowNull: false,
         }
     })
     Users.associate = (models) =>{

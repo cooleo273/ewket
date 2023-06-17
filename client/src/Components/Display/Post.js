@@ -26,7 +26,7 @@ function Post() {
     axios.post("http://localhost:3001/grades", {grade: newGrade, UserId: id},
     {
       headers:{
-        accessToken: sessionStorage.getItem("accessToken")
+        accessToken: localStorage.getItem("accessToken")
       }
     }).then((response)=>{
       if(response.data.error){
@@ -52,7 +52,11 @@ function Post() {
           {postObject.last_name}
         </div>
         <div>{grades.map((user, key)=>{
-          return <div key={key} className="grades">{user.grade}</div>
+          return <div key={key} className="grades">
+            {user.grade}
+            <label>username:{user.username}</label>
+            </div>
+          
         })}</div>
         
       </div>
