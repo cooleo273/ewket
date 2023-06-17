@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from '../../helpers/AuthContext';
 import axios from 'axios'
 function Header() {
-  const [authState, setAuthState] = useState(false);
+  const [authState, setAuthState] = useState(JSON.parse(localStorage.getItem('user')));
   useEffect(()=>{
     axios.get('http://localhost:3001/auth/user', {
       headers:{
@@ -11,9 +11,10 @@ function Header() {
     }})
     .then((response)=>{
       if (response.data.error){
-        setAuthState(false)
+        setAuthState(null)
     } else {
-      setAuthState(true)
+      setAuthState(response.data)
+      localStorage.setItem('user', JSON.stringify(response.data))
     }}
     )
       

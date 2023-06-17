@@ -11,18 +11,25 @@ function Login() {
   const [role, setRole]=useState("")
   const {setAuthState} = useContext(AuthContext)
   let navigate = useNavigate();
-  let { id } = useParams();
+
   const login = () =>{
-    
+    debugger;
     const data = { username: username, password:password, role:role}
     axios.post("http://localhost:3001/auth/login", data).then((response)=>{
       if(response.data.error) {
         alert (response.data.error)
       }
       else{
-        localStorage.setItem("accessToken", response.data)
-        setAuthState(true)
-        navigate(`/profile`)
+        localStorage.setItem("accessToken", response.data.accessToken)
+        localStorage.setItem("user", JSON.stringify(response.data))
+        setAuthState(response.data);
+
+        if (response.data.role === 'student') {
+          navigate(`/students/profile`)
+        } else {
+          navigate('/teachers')
+        }
+        
         
       }
       

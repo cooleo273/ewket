@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import axios from "axios"
 
 function Profile() {
-    let {id} = useParams();
+    debugger;
     const [first_name,setFirstname] = useState("")
     const [last_name,setLastname] = useState("")
     const [role, setRole]  = useState("")
@@ -18,16 +18,16 @@ function Profile() {
             setLastname(response.data.last_name)
             setRole(response.data.role)
         })
-    })
+    },[])
   return (
     <div className='ProfilePageContainer'>
         <div className='basicInfo'>
             {""}
-            <h1>Hello</h1>
+            
             <p>{first_name} {last_name}</p>
             <p>{role}</p>
         </div>
-        <div className='listOfPosts'></div>
+   
 
     </div>
   )
