@@ -26,9 +26,10 @@ function Teachers() {
 
     let navigate = useNavigate();
     const logout = () => {
-      localStorage.removeItem("accessToken");
-      JSON.parse(localStorage.removeItem('user'))
-      navigate('/')
+      JSON.parse(localStorage.getItem("user"));
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+    navigate("/");
     
       
     }

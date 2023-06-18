@@ -41,13 +41,14 @@ function App() {
             </Route>
             <Route
               path="/students"
+              exact
               element={
                 <ProtectedRoute
                   isAllowed={!!user && user.role === "student"}
                 />
               }
             >
-              <Route path="profile" element={<Profile />} />
+              <Route path="" element={<Profile />} />
             </Route>
           </Routes>
         </Router>

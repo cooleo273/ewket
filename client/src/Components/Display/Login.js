@@ -25,7 +25,7 @@ function Login() {
         setAuthState(response.data);
 
         if (response.data.role === 'student') {
-          navigate(`/students/profile`)
+          navigate('/students')
         } else {
           navigate('/teachers')
         }
