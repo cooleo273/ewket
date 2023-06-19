@@ -23,6 +23,7 @@ function Login() {
         localStorage.setItem("accessToken", response.data.accessToken)
         localStorage.setItem("user", JSON.stringify(response.data))
         setAuthState(response.data);
+        
 
         if (response.data.role === 'student') {
           navigate('/students')
@@ -51,13 +52,6 @@ function Login() {
       onChange={(event)=>{
         setPassword(event.target.value)
       }}></input>
-      <select
-      onChange={(event)=>{
-        setRole(event.target.value)
-      }}>
-        <option value="student">student</option>
-        <option value="teacher">teacher</option>
-      </select>
       <button onClick={login}>Login</button>
     </div>
   )

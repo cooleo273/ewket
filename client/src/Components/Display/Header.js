@@ -23,9 +23,10 @@ function Header() {
       });
   });
 const logout = () => {
+  JSON.parse(localStorage.getItem("user"));
   localStorage.removeItem("accessToken");
-  setAuthState(false);
-
+  localStorage.removeItem("user");
+  
   
 }
 
