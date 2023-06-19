@@ -39,8 +39,8 @@ const logout = () => {
         <Link to="/Schedule">Schedule</Link>
         {!authState ? (
           <>
-            <Link to="/AddStudents">Register</Link>
-            <Link to="/LoginPage">Login</Link>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Login</Link>
           </>
         ) : (
           <button className="btn-logout" onClick={logout}>Logout</button>

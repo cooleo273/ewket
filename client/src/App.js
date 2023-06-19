@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from "react-router-dom";
-import AddStudents from "./Components/Display/AddStudents";
 import Post from "./Components/Display/Post";
 
 import Home from "./Components/Display/Home";
@@ -13,6 +12,7 @@ import Profile from "./Components/Display/Profile";
 import Teachers from "./Components/Display/Teachers";
 import { AuthContext, UserContexct, UserContext } from "./helpers/AuthContext";
 import { useState } from "react";
+import Register from "./Components/Display/Register";
 
 function App() {
   debugger
@@ -23,9 +23,9 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/AddStudents" element={<AddStudents />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/auth/:id" exact element={<Post />} />
-            <Route path="/LoginPage" exact element={<Login />}></Route>
+            <Route path="/login" exact element={<Login />}></Route>
             <Route path="/Department" exact element={<Department />}></Route>
             <Route path="/About" exact element={<About />}></Route>
             <Route path="/Schedule" exact element={<Schedule />}></Route>

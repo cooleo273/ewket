@@ -26,6 +26,7 @@
 .AddStudentsContainer{
     display: flex;
     justify-content: center;
+    padding-top: 6rem;
 }
 
 form{

@@ -8,7 +8,7 @@ import Header from './Header';
 
 
 
-function AddStudents ()  {
+function Register ()  {
   let navigate = useNavigate();
 
   const SignupSchema = Yup.object().shape({
@@ -43,7 +43,7 @@ function AddStudents ()  {
       validationSchema = {SignupSchema}
     >
       {({ isSubmitting }) => (
-        <Form>
+        <Form id='login-form'>
           
           <label htmlFor="firstName">First Name</label>
           <ErrorMessage name="first_name" component="span" />
@@ -92,4 +92,4 @@ function AddStudents ()  {
 ;
 
 
-export default AddStudents;
+export default Register;
