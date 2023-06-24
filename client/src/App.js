@@ -13,6 +13,7 @@ import Teachers from "./Components/Display/Teachers";
 import { AuthContext, UserContexct, UserContext } from "./helpers/AuthContext";
 import { useState } from "react";
 import Register from "./Components/Display/Register";
+import Admin from "./Components/Display/Admin";
 
 function App() {
   debugger
@@ -39,6 +40,17 @@ function App() {
             >
               <Route path=""  element={<Teachers />} />
             </Route>
+
+            <Route
+              path="/admin"
+              exact
+              element={
+                <ProtectedRoute isAllowed={!!user && user.role === "admin"} />
+              }
+            >
+              <Route path=""  element={<Admin />} />
+            </Route>
+
             <Route
               path="/students"
               exact

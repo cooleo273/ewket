@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) =>{
-    const Course = sequelize.define("Grades", {
+    const Courses = sequelize.define("Courses", {
         
         course: {
             type: DataTypes.STRING, 
@@ -7,5 +7,5 @@ module.exports = (sequelize, DataTypes) =>{
         },
     })
 
-    return Course
+    return Courses
 }

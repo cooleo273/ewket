@@ -27,9 +27,12 @@ function Login() {
 
         if (response.data.role === 'student') {
           navigate('/students')
-        } else {
+        } else if (response.data.role === 'teacher'){
           navigate('/teachers')
+        }else if (response.data.role === 'admin'){
+          navigate('/admin')
         }
+
         
         
       }

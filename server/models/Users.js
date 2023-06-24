@@ -1,3 +1,4 @@
+const { Sequelize } = require(".")
 
 module.exports = (sequelize, DataTypes) =>{
     const Users = sequelize.define("Users", {
@@ -20,12 +21,12 @@ module.exports = (sequelize, DataTypes) =>{
         },
         role:{
           
-                type: DataTypes.ENUM("student", "teacher"),
+                type: DataTypes.ENUM(['student', 'teacher', 'admin']),
                 allowNull: false,
             
         },
         gender:{
-            type: DataTypes.ENUM('male','female'),
+            type: DataTypes.ENUM(['male','female']),
             allowNull: false,
         }
     })
