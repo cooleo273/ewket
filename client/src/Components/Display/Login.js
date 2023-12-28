@@ -15,7 +15,7 @@ function Login() {
   const login = () =>{
     debugger;
     const data = { username: username, password:password, role:role}
-    axios.post("http://localhost:3001/auth/login", data).then((response)=>{
+    axios.post("http://localhost:3002/auth/login", data).then((response)=>{
       if(response.data.error) {
         alert (response.data.error)
       }
@@ -44,17 +44,19 @@ function Login() {
 
   return (
     <div className='login-container'>
-      
+      <div className='y'>
+      <label><p>Username:</p></label>
       <input 
       type="text"
       onChange={(event)=>{
         setUsername(event.target.value)
-      }}></input>
-      <input 
+      }}></input></div>
+      <div className='y'>
+      <label><p>Password:</p></label><input 
       type="password"
       onChange={(event)=>{
         setPassword(event.target.value)
-      }}></input>
+      }}></input></div>
       <button onClick={login}>Login</button>
     </div>
   )

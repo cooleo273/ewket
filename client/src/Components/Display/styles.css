@@ -40,6 +40,7 @@ input{
     margin: 1rem 0;
     border: none;
     border-bottom: 1px solid;
+    width:10rem
 }
 
 button{
@@ -195,6 +196,9 @@ span{
     align-items: center;
     
 }
+.department-container h1{
+    margin: 10rem;
+}
 .student-container{
     display: flex;
     margin-top: 8rem;
@@ -217,4 +221,24 @@ span{
 }
 .ha{
     margin-left: 1rem;
+}
+.login-container{
+    
+
+    padding: 10rem;
+    padding-left: 42rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container button{
+    width: 10rem;
+}
+.y{
+    display: flex;
+    flex-direction: column;
+
+}
+.y input{
+    margin: none;
 }

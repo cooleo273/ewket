@@ -13,44 +13,52 @@ import Teachers from "./Components/Display/Teachers";
 import { AuthContext, UserContexct, UserContext } from "./helpers/AuthContext";
 import { useState } from "react";
 import Register from "./Components/Display/Register";
-import Admin from "./Components/Display/Admin";
+import Admin from "./Components/Display/Admin/Admin";
 
 function App() {
-  debugger
+  
   const [user, setAuthState] = useState(JSON.parse(localStorage.getItem('user')));
+  debugger;
   return (
+    
     <div className="App">
+      
       <AuthContext.Provider value={{ user, setAuthState }}>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/Home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/auth/:id" exact element={<Post />} />
-            <Route path="/login" exact element={<Login />}></Route>
+            <Route path="/" exact element={<Login />}></Route>
             <Route path="/Department" exact element={<Department />}></Route>
             <Route path="/About" exact element={<About />}></Route>
             <Route path="/Schedule" exact element={<Schedule />}></Route>
             <Route path="/Instructors" exact element={<Instructor />}></Route>
+           
             <Route
               path="/teachers"
               exact
               element={
-                <ProtectedRoute isAllowed={!!user && user.role === "teacher"} />
+                <ProtectedRoute
+                  isAllowed={!!user && user.role === "teacher"}
+                />
               }
             >
               <Route path=""  element={<Teachers />} />
+           
             </Route>
-
             <Route
               path="/admin"
               exact
               element={
-                <ProtectedRoute isAllowed={!!user && user.role === "admin"} />
+                <ProtectedRoute
+                  isAllowed={!!user && user.role === "admin"}
+                />
               }
             >
               <Route path=""  element={<Admin />} />
+            
             </Route>
-
             <Route
               path="/students"
               exact

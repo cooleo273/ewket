@@ -1,0 +1,35 @@
+.top-bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.admin-name{
+    flex: 10;
+    margin-top: 0.8rem;
+    margin-left: 2rem;
+}
+
+.admin-btn{
+    
+    margin-top: 1rem;
+    
+}
+
+.right-side{
+    flex: 1 1;
+    margin-right: 5rem;
+}
+
+.body-container{
+    display: flex;
+}
+
+.other-pages{
+    flex: 7;
+    background-color: aliceblue;
+}
+.side-bar{
+    flex: 1;
+    text-align: center;
+}

@@ -35,7 +35,7 @@ function Register ()  {
         gender:''
       }}
       onSubmit={async (value) => {
-        axios.post("http://localhost:3001/auth", value).then((response)=>{
+        axios.post("http://localhost:3002/auth", value).then((response)=>{
           navigate('/')
         })
 

@@ -5,16 +5,16 @@ import axios from "axios";
 
 function Post() {
   let { id } = useParams();
-  const [postObject, setPostObject] = useState({});
+  const [postObject, setPostObject] = useState([]);
   const [grades, setGrades] = useState([]);
   const [newGrade, setNewGrade] = useState("")
 
   
   useEffect(() => {
-    axios.get(`http://localhost:3001/auth/byId/${id}`).then((response) => {
+    axios.get(`http://localhost:3002/auth/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
-    axios.get(`http://localhost:3001/grades/${id}`).then((response) => {
+    axios.get(`http://localhost:3002/grades/${id}`).then((response) => {
       setGrades(response.data)
     });
     
@@ -23,7 +23,7 @@ function Post() {
   
 
   const addGrade = ()=>{
-    axios.post("http://localhost:3001/grades", {grade: newGrade, UserId: id},
+    axios.post("http://localhost:3002/grades", {grade: newGrade, UserId: id},
     {
       headers:{
         accessToken: localStorage.getItem("accessToken")
@@ -69,7 +69,7 @@ function Post() {
       </div>
       
     </div>
-  );
+  );  
 }
 
 export default Post;

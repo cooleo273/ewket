@@ -39,7 +39,7 @@ const logout = () => {
         <Link to="/Schedule">Schedule</Link>
         {!authState ? (
           <>
-            <Link to="/register">Register</Link>
+           
             <Link to="/login">Login</Link>
           </>
         ) : (

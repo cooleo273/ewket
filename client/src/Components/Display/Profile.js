@@ -9,21 +9,22 @@ function Profile() {
   const [user, setAuthState] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-  const [first_name, setFirstname] = useState("");
-  const [last_name, setLastname] = useState("");
-  const [role, setRole] = useState("");
+  const[first_name, setFirstname] = useState("")
+  const[last_name, setLastname] = useState("")
 
+  
   useEffect(() => {
     const headers = {
+        
       accessToken: localStorage.getItem("accessToken"),
     };
 
     axios
-      .get(`http://localhost:3001/auth/user`, { headers: headers })
+      .get(`http://localhost:3002/auth/user`, { headers: headers })
       .then((response) => {
         setFirstname(response.data.first_name);
         setLastname(response.data.last_name);
-        setRole(response.data.role);
+        
       });
   }, []);
   let navigate = useNavigate();
@@ -42,7 +43,6 @@ function Profile() {
           <p>
             {first_name} {last_name}
           </p>
-          <p>{role}</p>
           <button className="btn-logout" onClick={logout}>
             Logout
           </button>
