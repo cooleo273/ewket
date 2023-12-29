@@ -10,6 +10,9 @@ import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
+import SearchBar from "../Search/SearchBar";
+import SearchResultsList from "../Search/SearchResultsList";
+
 
 
 
@@ -18,6 +21,7 @@ import Sidebar from "./Sidebar";
 
 
 function Admin() {
+  const [results, setResults] = useState ([]);
   const [first_name, setFirstname] = useState("");
   const [last_name, setLastname] = useState("");
   const [role, setRole] = useState("");
@@ -42,9 +46,15 @@ function Admin() {
   
   return (
     <div className="ProfilePageContainer">
+      <div className="sidebar">
       <Sidebar/>
-      {""}
-      {first_name} {last_name} {role}
+      </div>
+      <div className="nameofadmin">
+      <h1>Dashboard</h1>
+      <div className="searchengine">
+      <SearchBar setResults={setResults}/>
+      <SearchResultsList results={results}/>
+      </div></div>
     </div>
   );
 }

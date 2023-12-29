@@ -20,12 +20,13 @@ function Sidebar() {
     navigate("/");
   };
   return(
-  <div>
+  <div className="side-bar-container">
+    <h2>Ewket school</h2>
     <li>Dashboard</li>
     <li>Students</li>
     <li>Teachers</li>
     <li>Attendance</li>
-    <li>Courses</li>
+    <li>Courses</li>  
     <li>Exam</li>
     <li>Setting</li>
     <li onClick={logout}>Logout</li>
