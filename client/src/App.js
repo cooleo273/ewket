@@ -1,40 +1,34 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from "react-router-dom";
 import Post from "./Components/Display/Post";
-
-import Home from "./Components/Display/Home";
 import Login from "./Components/Display/Login";
-import Department from "./Components/Display/Department";
-import About from "./Components/Display/About";
-import Instructor from "./Components/Display/Instructor";
-import Schedule from "./Components/Display/Schedule";
+
 import Profile from "./Components/Display/Profile";
 import Teachers from "./Components/Display/Teachers";
 import { AuthContext, UserContexct, UserContext } from "./helpers/AuthContext";
 import { useState } from "react";
 import Register from "./Components/Display/Register";
 import Admin from "./Components/Display/Admin/Admin";
+import { ColorModeContext, useMode } from "./theme";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 
 function App() {
-  
+  const [theme, colorMode] = useMode();
   const [user, setAuthState] = useState(JSON.parse(localStorage.getItem('user')));
   debugger;
   return (
-    
+    <ColorModeContext.Provider value={colorMode}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
     <div className="App">
       
       <AuthContext.Provider value={{ user, setAuthState }}>
         <Router>
           <Routes>
-            <Route path="/Home" element={<Home />} />
+            
             <Route path="/register" element={<Register />} />
             <Route path="/auth/:id" exact element={<Post />} />
             <Route path="/" exact element={<Login />}></Route>
-            <Route path="/Department" exact element={<Department />}></Route>
-            <Route path="/About" exact element={<About />}></Route>
-            <Route path="/Schedule" exact element={<Schedule />}></Route>
-            <Route path="/Instructors" exact element={<Instructor />}></Route>
-           
             <Route
               path="/teachers"
               exact
@@ -74,6 +68,8 @@ function App() {
         </Router>
       </AuthContext.Provider>
     </div>
+    </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 

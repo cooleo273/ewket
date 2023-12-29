@@ -4,7 +4,7 @@ import {Formik, Form, Field, ErrorMessage} from 'formik'
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 import * as Yup from 'yup';
-import Header from './Header';
+
 
 
 
@@ -24,7 +24,7 @@ function Register ()  {
   });
   return(
     <div className='AddStudentsContainer'>
-    <Header/>
+    
     <Formik
       initialValues={{
         first_name: '',
