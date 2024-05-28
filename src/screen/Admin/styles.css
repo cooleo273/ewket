@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.ProfilePageContainer{
+    display: flex;
+    height: 100vh;
+}
+.nameofadmin{
+    font-family: "Montserrat", sans-serif !important;
+    padding: 2rem;
+    overflow-y: scroll;
+}
+p{
+    font-family: "Montserrat", sans-serif !important;
+}
+.searchengine{
+    padding: 0rem;
+}
+.css-y0u0hj{
+    padding: 1rem 0rem !important;
+}
+.sidebar li{
+    margin-top: 1rem;
+}
+h3{
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+}
+
+.MuiBox-root .css-1m3bo6 button{
+    width: 2rem !important;
+}
+h5{
+    font-family: "Montserrat", sans-serif !important;
+}
+h1{
+    font-family: "Montserrat", sans-serif !important;
+}
+.main-cards{
+    display: flex;
+}
+.card{
+    flex: 1;
+}
+
+.sidebar .button button{
+    margin-top: 2rem;
+}
+
+.MuiBox-root .css-d2znx6{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+
+}
