@@ -9,7 +9,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const { setAuthState } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  
   const login = async () => {
     try {
       const loginData = { username, password };
@@ -18,6 +18,7 @@ function Login() {
       const response = await axios.post('http://localhost:5002/users/login', loginData);
 
       console.log('Login response:', response.data);
+      
 
       if (response.data.error) {
         alert(response.data.error);

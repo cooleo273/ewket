@@ -10,7 +10,8 @@ const SearchBar = () => {
   useEffect(() => {
     axios.get("http://localhost:5002/users/getallusers")
       .then((response) => {
-        setAllUsers(response.data || []);
+        setAllUsers(response.data );
+        
       })
       .catch((error) => {
         console.error('Error fetching data:', error);

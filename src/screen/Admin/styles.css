@@ -22,6 +22,69 @@ p{
 .sidebar li{
     margin-top: 1rem;
 }
+.parent-Information{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.useraccount{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.useradress{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.button{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+h1, h3, h4{
+    color: gray;
+}
+.registration-container{
+    display: flex;
+    
+}
+.specificInfo{
+    display: flex;
+    flex-direction: column;
+}
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+}
+.partition{
+    flex: 1;
+}
+input{
+    width: 40%;
+}
+.register-body{
+    display: flex;
+}
+.dbcwibc{
+    flex: 1;
+    padding: 2rem 4rem;
+}
+button{
+    width: 12.5rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    color: white;
+    cursor: pointer;
+    background-color: #444252;
+    font-family: "Montserrat", sans-serif;
+
+}
 h3{
     font-family: "Montserrat", sans-serif !important;
     font-size: 1.2rem !important;

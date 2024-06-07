@@ -9,6 +9,8 @@ import Login from './screen/Login/Login';
 import { Navigate, Outlet } from "react-router-dom";
 
 import { AuthContext } from './helpers/AuthContext';
+import StudentRegistration from './screen/Admin/aboutStudents/studentRegistration';
+
 
 function App() {
   
@@ -53,6 +55,8 @@ const [user, setAuthState] = useState(initialUser);
             >
               
               <Route path=""  element={<Admin />} />
+              <Route path='studentregister' element={<StudentRegistration/>}/>
+              
               
             </Route>
             <Route

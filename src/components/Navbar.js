@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Typography from '@mui/material/Typography';
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import img1 from "../assets/college students.jpg";
+
 import { Box, IconButton, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -34,7 +34,9 @@ const Navbar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   const [username, setUsername] = useState("");
+  const [user, setUser] = useState("")
   const accessToken = localStorage.getItem("accessToken");
+  
 
   let navigate = useNavigate();
 
@@ -56,6 +58,7 @@ const Navbar = () => {
       })
       .then((response) => {
         setUsername(response.data.username);
+        setUser(response.data)
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
@@ -90,6 +93,7 @@ const Navbar = () => {
       }}
     >
       <Sidebar collapsed={isCollapsed}>
+      
         <Menu iconShape="square">
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -103,9 +107,7 @@ const Navbar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
-                  Admins
-                </Typography>
+                
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
@@ -128,7 +130,7 @@ const Navbar = () => {
               </Box>
             </Box>
           )}
-
+          
           <Item
             title="Dashboard"
             to="/admin"
@@ -136,13 +138,15 @@ const Navbar = () => {
             selected={selected}
             setSelected={setSelected}
           />
+          {user.role === "admin" &&
           <Item
             title="Registration"
-            to="/admin/register"
+            to="/admin/studentregister"
             icon={<HomeOutlinedIcon />}
             selected={selected}
             setSelected={setSelected}
-          />
+          />}
+          
           <Item
             title="Attendance"
             to="/"
@@ -165,7 +169,7 @@ const Navbar = () => {
             setSelected={setSelected}
           />
           <div className="button">
-            <button>logout</button>
+            <button onClick={logout}>logout</button>
           </div>
         </Menu>
       </Sidebar>
