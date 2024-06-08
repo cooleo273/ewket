@@ -80,7 +80,8 @@ function StudentRegistration() {
       console.log(user);
       console.log("Registration successful:", response.data);
       // Redirect to a success page or perform other actions
-      navigate("/success");
+      window.alert("User registered successfully!");
+      
     } catch (error) {
       console.error("Error during registration:", error);
       // Handle error (e.g., show an error message to the user)
@@ -99,7 +100,7 @@ function StudentRegistration() {
       <div className="userInfo">
         <h3>User Information</h3>
         <div className="specificInfo">
-        <label htmlFor="fullName">Full Name:</label>
+        <label htmlFor="fullName">Full Name</label>
         <input
           type="text"
           id="fullName"
@@ -110,18 +111,17 @@ function StudentRegistration() {
         />
         </div>
         <div className="specificInfo">
-          <label htmlFor="rollNum">Roll Number:</label>
+          <label htmlFor="rollNum">Roll Number</label>
           <input
             type="text"
             id="rollNum"
             name="rollNum"
             value={user.rollNum}
             onChange={handleInputChange}
-            required
           />
         </div>
         <div className="specificInfo">
-          <label htmlFor="dateOfBirth">Date of birth:</label>
+          <label htmlFor="dateOfBirth">Date of birth</label>
           <input
             type="date"
             id="dateOfBirth"
@@ -132,7 +132,7 @@ function StudentRegistration() {
           />
         </div>
         <div className="specificInfo">
-          <label htmlFor="gender">gender:</label>
+          <label htmlFor="gender">Gender</label>
           <input
             type="text"
             id="gender"
@@ -143,7 +143,7 @@ function StudentRegistration() {
           />
         </div>
         <div className="specificInfo">
-          <label>schoolName</label>
+          <label>School Name</label>
         <input
           type="text"
           id="schoolName"
@@ -164,7 +164,7 @@ function StudentRegistration() {
         ></input>
         </div>
         <div className="specificInfo">
-          <label htmlFor="contactNumber">Contact Number:</label>
+          <label htmlFor="contactNumber">Contact Number</label>
           <input
             type="tel"
             id="contactNumber"
@@ -175,7 +175,7 @@ function StudentRegistration() {
           />
         </div>
         <div className="specificInfo">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -186,7 +186,7 @@ function StudentRegistration() {
           />
         </div>
         <div className="specificInfo">
-          <label htmlFor="nationality">Nationality:</label>
+          <label htmlFor="nationality">Nationality</label>
           <input
             type="text"
             id="nationality"
@@ -196,7 +196,7 @@ function StudentRegistration() {
             required
           />
         </div>
-        <label htmlFor="identificationNumber">Identification Number:</label>
+        <label htmlFor="identificationNumber">Identification Number</label>
         <input
           type="text"
           id="identificationNumber"
@@ -206,7 +206,7 @@ function StudentRegistration() {
           required
         />
         <div className="specificInfo">
-          <label htmlFor="previousSchool">Previous School:</label>
+          <label htmlFor="previousSchool">Previous School</label>
           <input
             type="text"
             id="previousSchool"
@@ -220,43 +220,47 @@ function StudentRegistration() {
 
       <div className="useradress">
         <h3>User Address</h3>
-        <label htmlFor="street">Street:</label>
+        
         <input
           type="text"
           id="street"
           name="street"
+          placeholder="Street"
           value={user.street}
           onChange={handleInputChange}
           required
         />
         <div className="specificInfo">
-          <label htmlFor="state">State:</label>
+          
           <input
             type="text"
             id="state"
             name="state"
+            placeholder="State"
             value={user.state}
             onChange={handleInputChange}
             required
           />
         </div>
         <div className="specificInfo">
-          <label htmlFor="city">city:</label>
+          
           <input
             type="text"
             id="city"
             name="city"
+            placeholder="City"
             value={user.city}
             onChange={handleInputChange}
             required
           />
         </div>
         <div className="specificInfo">
-          <label htmlFor="zip">zip code:</label>
+          
           <input
             type="text"
             id="zip"
             name="zip"
+            placeholder="Zip Code"
             value={user.zip}
             onChange={handleInputChange}
             required
@@ -267,7 +271,7 @@ function StudentRegistration() {
       <div className="partition">
       <div className="parent-Information">
         <h3>Parent Information</h3>
-        <label htmlFor="pgname">Parent/Guardian Name:</label>
+        <label htmlFor="pgname">Parent/Guardian Name</label>
         <input
           type="text"
           id="pgname"
@@ -278,7 +282,7 @@ function StudentRegistration() {
         />
         <div className="specificInfo">
           <label htmlFor="pgrelationship">
-            Relationship with Parent/Guardian:
+            Relationship with Parent/Guardian
           </label>
           <input
             type="text"
@@ -303,7 +307,7 @@ function StudentRegistration() {
           />
         </div>
         <div className="specificInfo">
-          <label htmlFor="pgemail">Parent/Guardian Email:</label>
+          <label htmlFor="pgemail">Parent/Guardian Email</label>
           <input
             type="email"
             id="pgemail"
@@ -314,7 +318,7 @@ function StudentRegistration() {
           />
         </div>
         <div className="specificInfo">
-          <label htmlFor="pgstreet">Parent/Guardian Address:</label>
+          <label htmlFor="pgstreet">Parent/Guardian Address</label>
           <input
             type="text"
             id="pgstreet"
@@ -362,7 +366,7 @@ function StudentRegistration() {
 
       <div className="useraccount">
         <h3>User Account</h3>
-        <label htmlFor="accountusername">Username:</label>
+        <label htmlFor="accountusername">Username</label>
         <input
           type="text"
           id="account"
@@ -372,7 +376,7 @@ function StudentRegistration() {
           required
         />
         <div className="specificInfo"> 
-          <label htmlFor="accountpassword">password:</label>
+          <label htmlFor="accountpassword">Password</label>
           <input
             type="text"
             id="account"
