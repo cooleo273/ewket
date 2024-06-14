@@ -146,6 +146,14 @@ const Navbar = () => {
             selected={selected}
             setSelected={setSelected}
           />}
+          {user.role === "admin" &&
+          <Item
+            title="Classes"
+            to="/admin/addclass"
+            icon={<HomeOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+          />}
           
           <Item
             title="Attendance"

@@ -10,6 +10,9 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import { AuthContext } from './helpers/AuthContext';
 import StudentRegistration from './screen/Admin/aboutStudents/studentRegistration';
+import AddClass from './screen/Admin/aboutClasses/addClasses';
+import ShowClasses from './screen/Admin/aboutClasses/showClasses';
+import ClassDetails from './screen/Admin/aboutClasses/ClassDetail';
 
 
 function App() {
@@ -56,7 +59,10 @@ const [user, setAuthState] = useState(initialUser);
               
               <Route path=""  element={<Admin />} />
               <Route path='studentregister' element={<StudentRegistration/>}/>
-              
+
+              <Route path="addclass" element={<AddClass />} />
+              <Route path="classes" element={<ShowClasses />} />
+              <Route path="class/:id" element={<ClassDetails />} />
               
             </Route>
             <Route
