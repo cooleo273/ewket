@@ -58,7 +58,7 @@ const [user, setAuthState] = useState(initialUser);
             >
               
               <Route path=""  element={<Admin />} />
-              <Route path='studentregister' element={<StudentRegistration/>}/>
+              <Route path='class/addstudents/:id' element={<StudentRegistration/>}/>
 
               <Route path="addclass" element={<AddClass />} />
               <Route path="classes" element={<ShowClasses />} />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, React } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 import {
@@ -26,7 +26,6 @@ const ClassDetails = () => {
     const [error, setError] = useState(null);
 
     const classID = params.id
-    console.log(classID)
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -77,13 +76,15 @@ const ClassDetails = () => {
         { id: 'code', label: 'Subject Code', minWidth: 100 },
     ]
 
-    const subjectRows = subjectsList.map((subject) => {
+    const subjectRows = subjectsList && Array.isArray(subjectsList)
+    ? subjectsList.map((subject) => {
         return {
             name: subject.subName,
             code: subject.subCode,
             id: subject._id,
         };
     })
+    : []; 
 
     const SubjectsButtonHaver = ({ row }) => {
         return (
@@ -132,13 +133,17 @@ const ClassDetails = () => {
         { id: 'rollNum', label: 'Roll Number', minWidth: 100 },
     ]
 
-    const studentRows = sclassStudents.map((student) => {
+    
+    const studentRows = sclassStudents && Array.isArray(sclassStudents)
+    ? sclassStudents.map((student) => {
         return {
             name: student.fullName,
             rollNum: student.rollNum,
             id: student._id,
         };
     })
+    : []; // Initialize subjectRows as an empty array if subjectsList is falsy or not an array
+
 
     const StudentsButtonHaver = ({ row }) => {
         return (
@@ -177,17 +182,20 @@ const ClassDetails = () => {
 
     const ClassStudentsSection = () => {
         return (
-            <>
-                <Typography variant="h5" gutterBottom>
-                    Students List:
-                </Typography>
-
-                <TableTemplate buttonHaver={StudentsButtonHaver} columns={studentColumns} rows={studentRows} />
-                <SpeedDialTemplate actions={studentActions} />
-            </>
-        )
-    }
-
+            <div>
+                {studentRows.length > 0 ? (
+                    <>
+                        <Typography variant="h5" gutterBottom>
+                            Students List:
+                        </Typography>
+                        <TableTemplate buttonHaver={StudentsButtonHaver} columns={studentColumns} rows={studentRows} />
+                        <SpeedDialTemplate actions={studentActions} />
+                    </>
+                ) : null}
+            </div>
+        );
+    };
+    
     const ClassTeachersSection = () => {
         return (
             <>
@@ -217,7 +225,7 @@ const ClassDetails = () => {
                 
                     <GreenButton
                         variant="contained"
-                        onClick={() => navigate("/Admin/class/addstudents/" + classID)}
+                        onClick={() => navigate("/admin/class/addstudents/" + classID)}
                     >
                         Add Students
                     </GreenButton>
@@ -229,7 +237,7 @@ const ClassDetails = () => {
                     >
                         Add Subjects
                     </GreenButton>
-                
+                    
             </>
         );
     }
