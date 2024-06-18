@@ -15,7 +15,7 @@ function Login() {
       const loginData = { username, password };
       console.log('Sending login request with data:', loginData);
 
-      const response = await axios.post('http://localhost:5002/users/login', loginData);
+      const response = await axios.post('http://localhost:5001/users/login', loginData);
 
       console.log('Login response:', response.data);
       

@@ -34,7 +34,7 @@ const ShowClasses = () => {
     }
 
     axios
-      .get("http://localhost:5002/users/current", {
+      .get("http://localhost:5001/users/current", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +58,7 @@ const ShowClasses = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5002/users/SclassList`);
+        const response = await axios.get(`http://localhost:5001/users/SclassList`);
         setSclassesList(response.data);
       } catch (err) {
         setError(err.message || 'Network error');
@@ -76,7 +76,7 @@ const ShowClasses = () => {
     setMessage('Sorry, the delete function has been disabled for now.');
     setShowPopup(true);
     // You can make an Axios DELETE request here if needed
-    // Example: await axios.delete(`http://localhost:5002/users/${deleteID}/${address}`);
+    // Example: await axios.delete(`http://localhost:5001/users/${deleteID}/${address}`);
   };
 
   const SclassButtonHaver = ({ row }) => {

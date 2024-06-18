@@ -12,7 +12,7 @@ const PieChart = () => {
     // Replace with your API endpoint
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5002/users/row-count');
+        const response = await axios.get('http://localhost:5001/users/row-count');
       const { student, teacher, admin} = response.data;
 
       // Process API data to match chart data format

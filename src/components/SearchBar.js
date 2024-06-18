@@ -8,7 +8,7 @@ const SearchBar = () => {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5002/users/getallusers")
+    axios.get("http://localhost:5001/users/getallusers")
       .then((response) => {
         setAllUsers(response.data );
         
