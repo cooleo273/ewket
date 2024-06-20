@@ -7,6 +7,7 @@ import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
 import { BlueButton } from "../../../components/buttonStyles"
 import styled from "styled-components";
 import Classroom from "../../../assets/classroom.jpg"
+import "../styles.css"
 
 
 
@@ -98,15 +99,20 @@ const AddClass = () => {
                                 }}
                                 required
                             />
-                            <button
+                            <div className="view-create-button">
+                            <BlueButton
                                 type="submit"
                                 disabled={loader}
                             >
-                                {loader ? <CircularProgress size={24} color="inherit" /> : "Create"}
-                            </button>
-                            <Button variant="outlined" onClick={() => navigate(-1)}>
+                                {loader ? <CircularProgress size={24} color="inherit" /> : "Create Class"}
+                            </BlueButton>
+                            <BlueButton variant="outlined" onClick={() => navigate("/admin/classes")}>View Classes</BlueButton>
+                            <BlueButton variant="outlined" onClick={() => navigate(-1)}>
                                 Go Back
-                            </Button>
+                            </BlueButton>
+                            </div>
+
+                            
                         </Stack>
                     </form>
                 </StyledBox>

@@ -5,21 +5,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../../components/Navbar";
 
 function StudentRegistration() {
-  const params = useParams()
-  const [userData, setUserData] = useState("");
+  const params = useParams();
+  const classID = params.id;
+  const [userData, setUserData] = useState({});
   const token = localStorage.getItem("accessToken");
   const [className, setClassName] = useState("");
   const [sclassName, setSclassName] = useState("");
   const [sclassesList, setSclassesList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const classID = params.id;
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     fullName: "",
     dateOfBirth: "",
     gender: "",
     role: "",
-    street: "", // Initialize with an empty string
+    street: "",
     city: "",
     state: "",
     zip: "",
@@ -38,21 +40,11 @@ function StudentRegistration() {
     pgzip: "",
     previousSchool: "",
     accountusername: "",
-    sclassName:"",
     accountpassword: "",
     rollNum: "",
     adminID: "665b893fbd4f7af08b321eb8",
+    sclassName: "" // Initialize sclassName in user state
   });
-
-  const navigate = useNavigate();
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,8 +57,6 @@ function StudentRegistration() {
           `http://localhost:5001/users/SclassList`
         );
         setSclassesList(sclassListResponse.data);
-        console.log(sclassesList)
-
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -75,7 +65,7 @@ function StudentRegistration() {
     };
 
     fetchData();
-  }, [classID, sclassName]);
+  }, [classID]);
 
   useEffect(() => {
     if (!token) {
@@ -89,34 +79,48 @@ function StudentRegistration() {
           Authorization: `Bearer ${token}`,
         },
       })
-
       .then((response) => {
         setUserData(response.data);
-        console.log(userData)
       })
       .catch((error) => {
-        if (error.response.status === 401) {
+        if (error.response && error.response.status === 401) {
           localStorage.removeItem("accessToken");
           localStorage.removeItem("user");
           navigate("/");
         }
       });
   }, [token, navigate]);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+
   const changeHandler = (event) => {
-    if (event.target.value === "Select Class") {
+    const selectedValue = event.target.value;
+    if (selectedValue === "Select Class") {
       setClassName("Select Class");
-      setSclassName("");
+      setUser((prevUser) => ({
+        ...prevUser,
+        sclassName: ""  // Set sclassName to empty string or null when "Select Class" is chosen
+      }));
     } else {
       const selectedClass = sclassesList.find(
-        (classItem) => classItem.sclassName === event.target.value
+        (classItem) => classItem.sclassName === selectedValue
       );
-      setClassName(selectedClass.sclassName);
-      console.log("Updated className:", selectedClass.sclassName); // Log the updated className
-      setSclassName(selectedClass._id);
-      console.log("Updated sclassName:", selectedClass._id); // Log the updated sclassName
+      if (selectedClass) {
+        setClassName(selectedClass.sclassName);
+        setUser((prevUser) => ({
+          ...prevUser,
+          sclassName: selectedClass._id  // Assuming selectedClass has an _id field
+        }));
+      }
     }
   };
-    
+  
 
   const registerUser = async () => {
     try {
@@ -124,12 +128,15 @@ function StudentRegistration() {
         "http://localhost:5001/users/register",
         user
       );
-      console.log(user);
       console.log("Registration successful:", response.data);
-      // Redirect to a success page or perform other actions
       window.alert("User registered successfully!");
+      // Redirect to a success page or perform other actions after registration
     } catch (error) {
       console.error("Error during registration:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+      }
       // Handle error (e.g., show an error message to the user)
     }
   };
@@ -223,7 +230,7 @@ function StudentRegistration() {
                   value={user.role}
                   onChange={handleInputChange}
                   required
-                ></input>
+                />
               </div>
               <div className="specificInfo">
                 <label htmlFor="contactNumber">Contact Number</label>
@@ -456,20 +463,12 @@ function StudentRegistration() {
           <div>
             <input
               type="hidden"
-              id="sclassName"
-              name="sclassName"
-              value={user.sclassName}
-              onChange={handleInputChange}
+              id="school"
+              name="school"
+              value={user.adminID}
               required
             />
           </div>
-          <input
-            type="hidden"
-            id="school"
-            name="school"
-            value={user.adminID}
-            required
-          />
         </div>
       </div>
     </div>
