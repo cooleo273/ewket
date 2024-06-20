@@ -18,7 +18,7 @@ function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5002/users/row-count")
+      .get("http://localhost:5001/users/row-count")
       .then((response) => setUserNumber(response.data.count))
       .catch((error) => console.log(error));
   }, []);
@@ -26,7 +26,7 @@ function Admin() {
  
   useEffect(() => {
     axios
-      .get("http://localhost:5002/users/row-count")
+      .get("http://localhost:5001/users/row-count")
       .then((response) => setStudentNumber(response.data.student))
       .catch((error) => console.log(error));
   }, []);
@@ -34,7 +34,7 @@ function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5002/users/row-count")
+      .get("http://localhost:5001/users/row-count")
       .then((response) => setTeacherNumber(response.data.teacher))
       .catch((error) => console.log(error));
   }, []);

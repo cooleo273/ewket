@@ -14,7 +14,7 @@ const Student = () => {
       return;
     }
 
-    axios.get('http://localhost:5002/users/current', {
+    axios.get('http://localhost:5001/users/current', {
       headers: {
         Authorization: `Bearer ${token}`
       }

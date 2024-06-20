@@ -58,11 +58,11 @@ function StudentRegistration() {
     const fetchData = async () => {
       try {
         const classDetailsResponse = await axios.get(
-          `http://localhost:5002/users/Sclass/${classID}`
+          `http://localhost:5001/users/Sclass/${classID}`
         );
         setSclassName(classDetailsResponse.data.sclassName);
         const sclassListResponse = await axios.get(
-          `http://localhost:5002/users/SclassList`
+          `http://localhost:5001/users/SclassList`
         );
         setSclassesList(sclassListResponse.data);
         console.log(sclassesList)
@@ -84,7 +84,7 @@ function StudentRegistration() {
     }
 
     axios
-      .get("http://localhost:5002/users/current", {
+      .get("http://localhost:5001/users/current", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -121,7 +121,7 @@ function StudentRegistration() {
   const registerUser = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5002/users/register",
+        "http://localhost:5001/users/register",
         user
       );
       console.log(user);

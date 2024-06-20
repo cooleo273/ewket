@@ -51,7 +51,7 @@ const Navbar = () => {
       navigate("/"); // Redirect to login page if token is not found
     }
     axios
-      .get(`http://localhost:5002/users/current`, {
+      .get(`http://localhost:5001/users/current`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }

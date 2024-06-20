@@ -29,14 +29,14 @@ const ClassDetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const classDetailsResponse = await axios.get(`http://localhost:5002/users/Sclass/${classID}`);
+                const classDetailsResponse = await axios.get(`http://localhost:5001/users/Sclass/${classID}`);
                 setSclassDetails(classDetailsResponse.data);
                 
-                const subjectListResponse = await axios.get(`http://localhost:5002/users/ClassSubjects/${classID}`);
+                const subjectListResponse = await axios.get(`http://localhost:5001/users/ClassSubjects/${classID}`);
                 setSubjectsList(subjectListResponse.data);
                 console.log(subjectsList)
                 
-                const classStudentsResponse = await axios.get(`http://localhost:5002/users/Sclass/Students/${classID}`);
+                const classStudentsResponse = await axios.get(`http://localhost:5001/users/Sclass/Students/${classID}`);
                 setSclassStudents(classStudentsResponse.data);
                 
                 setLoading(false);

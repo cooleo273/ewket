@@ -22,7 +22,7 @@ const AddClass = () => {
     }
 
     axios
-      .get("http://localhost:5002/users/current", {
+      .get("http://localhost:5001/users/current", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +58,7 @@ const AddClass = () => {
 
     try {
       // Make the API request using Axios
-      const response = await axios.post("http://localhost:5002/users/SclassCreate", fields);
+      const response = await axios.post("http://localhost:5001/users/SclassCreate", fields);
 
       console.log("Registration successful:", response.data);
       navigate("/admin/class/" + response.data._id);
