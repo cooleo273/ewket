@@ -16,6 +16,10 @@ p{
 .searchengine{
     padding: 0rem;
 }
+.view-create-button{
+    display: flex;
+    gap: 4rem;
+}
 .css-y0u0hj{
     padding: 1rem 0rem !important;
 }
@@ -38,7 +42,9 @@ p{
     gap: 1rem;
 }
 .button{
-    
+    border-radius: 10px;
+    width: 12.5rem;
+    height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,14 +77,15 @@ h1, h3, h4{
 .register-body{
     display: flex;
 }
+.css-ewdv3l{
+    height: 100vh;
+}
 .dbcwibc{
     flex: 1;
     padding: 2rem 4rem;
 }
 button{
-    width: 12.5rem;
-    height: 2.5rem;
-    border-radius: 10px;
+    
     border: 1px solid darkgray;
     color: white;
     cursor: pointer;

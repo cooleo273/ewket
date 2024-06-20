@@ -43,8 +43,15 @@ export const BlueButton = styled(Button)`
   && {
     background-color: #080a43;
     color: #fff;
-    &:hover {
-      background-color: #0a1e82;
+    border-radius: 10px;
+    background-color: #444252;
+    border: 1px solid darkgray; 
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    width: 10rem;
+     &:hover {
+      background-color: #444252 !important;
+      
     }
   }
 `;
