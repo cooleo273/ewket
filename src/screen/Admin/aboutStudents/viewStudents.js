@@ -97,7 +97,7 @@ const ViewStudent = () => {
         event.preventDefault();
         try {
             const fields = {
-                name: userDetails.name,
+                name: userDetails.fullName,
                 rollNum: userDetails.rollNum,
                 password: userDetails.password // Assuming password is fetched in userDetails
             };
@@ -166,7 +166,6 @@ const ViewStudent = () => {
     });
 
     // Component for rendering student attendance section
-    
     const StudentAttendanceSection = () => {
         const renderTableSection = () => {
             return (
@@ -182,7 +181,7 @@ const ViewStudent = () => {
                                 <StyledTableCell align="center">Actions</StyledTableCell>
                             </StyledTableRow>
                         </TableHead>
-                        {Object.entries(groupAttendanceBySubject(userDetails.subjectAttendance)).map(([subName, { present, allData, subId, sessions }], index) => {
+                        {Object.entries(groupAttendanceBySubject(subjectAttendance)).map(([subName, { present, allData, subId, sessions }], index) => {
                             const subjectAttendancePercentage = calculateSubjectAttendancePercentage(present, sessions);
                             return (
                                 <TableBody key={index}>
@@ -384,7 +383,7 @@ const ViewStudent = () => {
                     Delete
                 </Button>
                 <br />
-                {/* <Button variant="contained" sx={styles.styledButton} className="show-tab" onClick={() => { setShowTab(!showTab) }}>
+                <Button variant="contained" sx={styles.styledButton} className="show-tab" onClick={() => { setShowTab(!showTab) }}>
                     {
                         showTab
                             ? <KeyboardArrowUp />
@@ -417,7 +416,7 @@ const ViewStudent = () => {
                             <button className="registerButton" type="submit" >Update</button>
                         </form>
                     </div>
-                </Collapse> */}
+                </Collapse> 
             </div>
         )
     }
