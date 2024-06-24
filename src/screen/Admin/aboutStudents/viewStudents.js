@@ -61,6 +61,16 @@ const ViewStudent = () => {
             console.error("Error fetching subject list:", error);
         }
     };
+    useEffect(() => {
+        if (userDetails) {
+            setName(userDetails.name || '');
+            setRollNum(userDetails.rollNum || '');
+            setSclassName(userDetails.sclassName || '');
+            setStudentSchool(userDetails.school || '');
+            setSubjectMarks(userDetails.examResult || '');
+            setSubjectAttendance(userDetails.attendance || []);
+        }
+    }, [userDetails]);
 
     // useEffect to fetch user details on component mount
     useEffect(() => {
@@ -97,11 +107,11 @@ const ViewStudent = () => {
         event.preventDefault();
         try {
             const fields = {
-                name: userDetails.fullName,
+                fullName: userDetails.fullName,
                 rollNum: userDetails.rollNum,
-                password: userDetails.password // Assuming password is fetched in userDetails
+                password: password // Assuming password is fetched in userDetails
             };
-            await axios.put(`/api/updateUser/${studentID}/${address}`, fields);
+            await axios.put(`http://localhost:5001/users/Student/${studentID}`, fields);
             await fetchUserDetails(); // Refresh user details after update
         } catch (error) {
             console.error("Error updating user:", error);
@@ -145,8 +155,9 @@ const ViewStudent = () => {
         return <div>No attendance data available</div>;
     }
     // Calculate overall attendance percentage and overall absent percentage
-    const overallAttendancePercentage = calculateOverallAttendancePercentage(userDetails.attendance);
+    const overallAttendancePercentage = calculateOverallAttendancePercentage(subjectAttendance);
     const overallAbsentPercentage = 100 - overallAttendancePercentage;
+    
 
     // Prepare data for charts
     const chartData = [
@@ -155,7 +166,7 @@ const ViewStudent = () => {
     ];
 
     // Prepare subject data for rendering
-    const subjectData = Object.entries(groupAttendanceBySubject(userDetails.attendance)).map(([subName, { subCode, present, sessions }]) => {
+    const subjectData = Object.entries(groupAttendanceBySubject(subjectAttendance)).map(([subName, { subCode, present, sessions }]) => {
         const subjectAttendancePercentage = calculateSubjectAttendancePercentage(present, sessions);
         return {
             subject: subName,
@@ -168,6 +179,11 @@ const ViewStudent = () => {
     // Component for rendering student attendance section
     const StudentAttendanceSection = () => {
         const renderTableSection = () => {
+            if (typeof overallAttendancePercentage !== 'number') {
+                console.error('Overall attendance percentage is not a number.', overallAttendancePercentage);
+                return null; // or handle error condition
+            }
+            const formattedPercentage = overallAttendancePercentage.toFixed(2);
             return (
                 <>
                     <h3>Attendance:</h3>
@@ -182,6 +198,7 @@ const ViewStudent = () => {
                             </StyledTableRow>
                         </TableHead>
                         {Object.entries(groupAttendanceBySubject(subjectAttendance)).map(([subName, { present, allData, subId, sessions }], index) => {
+                            
                             const subjectAttendancePercentage = calculateSubjectAttendancePercentage(present, sessions);
                             return (
                                 <TableBody key={index}>
@@ -243,7 +260,7 @@ const ViewStudent = () => {
                         )}
                     </Table>
                     <div>
-                        Overall Attendance Percentage: {overallAttendancePercentage.toFixed(2)}%
+                        Overall Attendance Percentage: {formattedPercentage}
                     </div>
                     <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => removeHandler(studentID, "RemoveStudentAtten")}>Delete All</Button>
                     <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/attendance/" + studentID)}>
@@ -404,7 +421,7 @@ const ViewStudent = () => {
                             <label>Roll Number</label>
                             <input className="registerInput" type="number" placeholder="Enter user's Roll Number..."
                                 value={rollNum}
-                                onChange={(event) => setRollNum(event.target.value)}
+                                onChange={(event) => setRollNum(event.target.value.toString())}
                                 required />
 
                             <label>Password</label>

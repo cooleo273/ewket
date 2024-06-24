@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useParams } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Typography from '@mui/material/Typography';
@@ -14,7 +14,8 @@ import { tokens } from "./theme";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+  
+  
   return (
     <MenuItem
       active={selected === title}
@@ -138,14 +139,7 @@ const Navbar = () => {
             selected={selected}
             setSelected={setSelected}
           />
-          {user.role === "admin" &&
-          <Item
-            title="Registration"
-            to="/admin/studentregister"
-            icon={<HomeOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />}
+          
           {user.role === "admin" &&
           <Item
             title="Classes"

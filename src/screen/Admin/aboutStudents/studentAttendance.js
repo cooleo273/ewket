@@ -30,12 +30,14 @@ const StudentAttendance = ({ situation }) => {
     const params = useParams();
 
     useEffect(() => {
+        console.log(situation);
         if (situation === "Student") {
             setStudentID(params.id);
             const stdID = params.id;
             axios.get(`http://localhost:5001/users/Student/${stdID}`) // Adjust the API endpoint according to your backend structure
                 .then(response => {
                     setUserDetails(response.data);
+                    console.log(response.data);
                     setLoading(false);
                 })  
                 .catch(error => {
@@ -81,7 +83,9 @@ const StudentAttendance = ({ situation }) => {
     const submitHandler = (event) => {
         event.preventDefault();
         setLoader(true);
-        axios.post(`/api/students/${studentID}/attendance`, fields) // Adjust the API endpoint according to your backend structure
+        axios.put(`http://localhost:5001/users/StudentAttendance/${studentID}`, fields, {
+            headers: { 'Content-Type': 'application/json' },
+        }) // Adjust the API endpoint according to your backend structure
             .then(response => {
                 setLoader(false);
                 setResponse(response.data);
@@ -119,9 +123,9 @@ const StudentAttendance = ({ situation }) => {
                     >
                         <Stack spacing={1} sx={{ mb: 3 }}>
                             <Typography variant="h4">
-                                Student Name: {userDetails.name}
+                                Student Name: {userDetails.fullName}
                             </Typography>
-                            {currentUser.teachSubject && (
+                            {currentUser && currentUser.teachSubject && (
                                 <Typography variant="h4">
                                     Subject Name: {currentUser.teachSubject?.subName}
                                 </Typography>
