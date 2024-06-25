@@ -15,6 +15,7 @@ import ShowClasses from './screen/Admin/aboutClasses/showClasses';
 import ClassDetails from './screen/Admin/aboutClasses/ClassDetail';
 import ViewStudent from './screen/Admin/aboutStudents/viewStudents';
 import StudentAttendance from './screen/Admin/aboutStudents/studentAttendance';
+import ShowSubjects from './screen/Admin/aboutSubjects/ShowSubjects';
 
 
 function App() {
@@ -67,6 +68,7 @@ const [user, setAuthState] = useState(initialUser);
               <Route path="class/:id" element={<ClassDetails />} />
               <Route path="students/student/:id" element={<ViewStudent />} />
               <Route path="students/student/attendance/:id" element={<StudentAttendance situation="Student" />} />
+              <Route path="addsubject/:id" element={<ShowSubjects />} />
               
             </Route>
             <Route
