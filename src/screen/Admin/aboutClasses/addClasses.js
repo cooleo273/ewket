@@ -129,6 +129,7 @@ const StyledContainer = styled(Box)`
   align-items: center;
   display: flex;
   justify-content: center;
+
 `;
 
 const StyledBox = styled(Box)`
@@ -138,5 +139,5 @@ const StyledBox = styled(Box)`
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 20px;
 `;
