@@ -153,7 +153,7 @@ const ClassDetails = () => {
                 </IconButton>
                 <BlueButton
                     variant="contained"
-                    onClick={() => navigate("/Admin/students/student/" + row.id)}
+                    onClick={() => navigate("/admin/students/student/" + row.id)}
                 >
                     View
                 </BlueButton>

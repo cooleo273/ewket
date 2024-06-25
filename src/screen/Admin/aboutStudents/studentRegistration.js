@@ -324,7 +324,7 @@ function StudentRegistration() {
                 />
               </div>
               <div className="specificInfo">
-                <input
+                <input  
                   type="text"
                   id="zip"
                   name="zip"

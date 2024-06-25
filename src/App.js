@@ -13,6 +13,7 @@ import StudentRegistration from './screen/Admin/aboutStudents/studentRegistratio
 import AddClass from './screen/Admin/aboutClasses/addClasses';
 import ShowClasses from './screen/Admin/aboutClasses/showClasses';
 import ClassDetails from './screen/Admin/aboutClasses/ClassDetail';
+import ViewStudent from './screen/Admin/aboutStudents/viewStudent';
 
 
 function App() {
@@ -63,6 +64,7 @@ const [user, setAuthState] = useState(initialUser);
               <Route path="addclass" element={<AddClass />} />
               <Route path="classes" element={<ShowClasses />} />
               <Route path="class/:id" element={<ClassDetails />} />
+              <Route path='students/student/:id' element={<ViewStudent/>}/>
               
             </Route>
             <Route

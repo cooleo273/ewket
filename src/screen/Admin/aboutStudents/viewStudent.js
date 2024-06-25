@@ -14,7 +14,7 @@ import InsertChartIcon from '@mui/icons-material/InsertChart';
 import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';
 import TableChartIcon from '@mui/icons-material/TableChart';
 import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
-import Popup from '../../../components/Popup';
+
 import CustomBarChart from '../../../components/CustomBarChart';
 import CustomPieChart from '../../../components/CustomPieChart';
 import {
@@ -71,7 +71,7 @@ const ViewStudent = () => {
 
     const deleteUser = () => {
         setMessage("Sorry the delete function has been disabled for now.");
-        setShowPopup(true);
+        
     };
 
     const removeHandler = (id, deladdress) => {
@@ -194,7 +194,7 @@ const ViewStudent = () => {
                         Overall Attendance Percentage: {overallAttendancePercentage.toFixed(2)}%
                     </div>
                     <Button variant="contained" color="error" startIcon={<DeleteIcon />}
-                        onClick={() => removeHandler(studentID, "RemoveStudentAtten")}>Delete All</Button>
+                        onClick={() => removeHandler(studentID, "RemoveStudentAtten ")}>Delete All</Button>
                     <Button variant="contained" onClick={() => navigate(`/Admin/students/student/attendance/${studentID}`)}>
                         Add Attendance
                     </Button>
