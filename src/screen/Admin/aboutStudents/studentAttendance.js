@@ -17,7 +17,7 @@ const StudentAttendance = ({ situation }) => {
     const [subjectsList, setSubjectsList] = useState([]);
     const [response, setResponse] = useState(null);
     const [error, setError] = useState(null);
-    const [statestatus, setStateStatus] = useState(null);
+    
     const [studentID, setStudentID] = useState("");
     const [subjectName, setSubjectName] = useState("");
     const [chosenSubName, setChosenSubName] = useState("");

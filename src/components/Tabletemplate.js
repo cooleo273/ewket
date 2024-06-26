@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import { Paper, Table, TableBody, TableContainer, TableHead, TablePagination } from '@mui/material';
 import { StyledTableCell, StyledTableRow } from './styles';
-import { Table, TableBody, TableContainer, TableHead, TablePagination } from '@mui/material';
 
 const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
+
     return (
         <>
-            <TableContainer>
+            <TableContainer component={Paper}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <StyledTableRow>
@@ -28,27 +30,23 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
                     <TableBody>
                         {rows
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map((row) => {
-                                return (
-                                    <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                                        {columns.map((column) => {
-                                            const value = row[column.id];
-                                            return (
-                                                <StyledTableCell key={column.id} align={column.align}>
-                                                    {
-                                                        column.format && typeof value === 'number'
-                                                            ? column.format(value)
-                                                            : value
-                                                    }
-                                                </StyledTableCell>
-                                            );
-                                        })}
-                                        <StyledTableCell align="center">
-                                            <ButtonHaver row={row} />
-                                        </StyledTableCell>
-                                    </StyledTableRow>
-                                );
-                            })}
+                            .map((row, index) => (
+                                <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                                    {columns.map((column) => {
+                                        const value = row[column.id];
+                                        return (
+                                            <StyledTableCell key={`${column.id}-${index}`} align={column.align}>
+                                                {column.format && typeof value === 'number'
+                                                    ? column.format(value)
+                                                    : value}
+                                            </StyledTableCell>
+                                        );
+                                    })}
+                                    <StyledTableCell align="center">
+                                        <ButtonHaver row={row} />
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            ))}
                     </TableBody>
                 </Table>
             </TableContainer>
@@ -60,12 +58,12 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
                 page={page}
                 onPageChange={(event, newPage) => setPage(newPage)}
                 onRowsPerPageChange={(event) => {
-                    setRowsPerPage(parseInt(event.target.value, 5));
+                    setRowsPerPage(parseInt(event.target.value, 10));
                     setPage(0);
                 }}
             />
         </>
-    )
+    );
 }
 
-export default TableTemplate
+export default TableTemplate;

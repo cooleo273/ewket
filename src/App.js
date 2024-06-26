@@ -13,12 +13,10 @@ import StudentRegistration from './screen/Admin/aboutStudents/studentRegistratio
 import AddClass from './screen/Admin/aboutClasses/addClasses';
 import ShowClasses from './screen/Admin/aboutClasses/showClasses';
 import ClassDetails from './screen/Admin/aboutClasses/ClassDetail';
-<<<<<<< HEAD
-=======
 import ViewStudent from './screen/Admin/aboutStudents/viewStudents';
 import StudentAttendance from './screen/Admin/aboutStudents/studentAttendance';
 import ShowSubjects from './screen/Admin/aboutSubjects/ShowSubjects';
->>>>>>> 3180d34d820c43c37321b8c29fcfd7ea58a5b288
+import SubjectForm from './screen/Admin/aboutSubjects/SubjectForm';
 
 
 function App() {
@@ -69,12 +67,10 @@ const [user, setAuthState] = useState(initialUser);
               <Route path="addclass" element={<AddClass />} />
               <Route path="classes" element={<ShowClasses />} />
               <Route path="class/:id" element={<ClassDetails />} />
-<<<<<<< HEAD
-=======
               <Route path="students/student/:id" element={<ViewStudent />} />
               <Route path="students/student/attendance/:id" element={<StudentAttendance situation="Student" />} />
-              <Route path="addsubject/:id" element={<ShowSubjects />} />
->>>>>>> 3180d34d820c43c37321b8c29fcfd7ea58a5b288
+              <Route path="subjects" element={<ShowSubjects />} />
+              <Route path="addsubject/:id" element={<SubjectForm />} />
               
             </Route>
             <Route
