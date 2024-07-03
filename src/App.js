@@ -17,6 +17,8 @@ import ViewStudent from './screen/Admin/aboutStudents/viewStudents';
 import StudentAttendance from './screen/Admin/aboutStudents/studentAttendance';
 import ShowSubjects from './screen/Admin/aboutSubjects/ShowSubjects';
 import SubjectForm from './screen/Admin/aboutSubjects/SubjectForm';
+import ViewSubject from './screen/Admin/aboutSubjects/ViewSubjects';
+import AddTeacher from './screen/Admin/aboutTeachers/addTeacher';
 
 
 function App() {
@@ -71,6 +73,8 @@ const [user, setAuthState] = useState(initialUser);
               <Route path="students/student/attendance/:id" element={<StudentAttendance situation="Student" />} />
               <Route path="subjects" element={<ShowSubjects />} />
               <Route path="addsubject/:id" element={<SubjectForm />} />
+              <Route path="class/subject/:classID/:subjectID" element={<ViewSubject />} />
+              <Route path="teachers/addteacher/:id" element={<AddTeacher />} />
               
             </Route>
             <Route

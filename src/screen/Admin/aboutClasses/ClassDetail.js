@@ -95,7 +95,7 @@ const ClassDetails = () => {
                 <BlueButton
                     variant="contained"
                     onClick={() => {
-                        navigate(`/Admin/class/subject/${classID}/${row.id}`)
+                        navigate(`/admin/class/subject/${classID}/${row.id}`)
                     }}
                 >
                     View

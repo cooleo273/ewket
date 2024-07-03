@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "../styles.css";
-import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../../../components/Navbar";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
-function StudentRegistration() {
+import { CircularProgress } from '@mui/material';
+
+const AddTeacher = () => {
   const params = useParams();
-  const classID = params.id;
-  const [userData, setUserData] = useState({});
-  const token = localStorage.getItem("accessToken");
+  const navigate = useNavigate();
+
+  const subjectID = params.id;
+
+  const [subjectDetails, setSubjectDetails] = useState(null);
   const [className, setClassName] = useState("");
   const [sclassName, setSclassName] = useState("");
   const [sclassesList, setSclassesList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+  const [message, setMessage] = useState('');
+  const [loader, setLoader] = useState(false);
 
+  const school = subjectDetails && subjectDetails.school;
+  const teachSubject = subjectDetails && subjectDetails._id;
+  const teachSclass = subjectDetails && subjectDetails.sclassName && subjectDetails.sclassName._id;
+  const fields = { school, teachSubject, teachSclass }
   const [user, setUser] = useState({
     fullName: "",
     dateOfBirth: "",
     gender: "",
-    role: "student",
+    role: "teacher",
     street: "",
     city: "",
     state: "",
@@ -46,51 +52,6 @@ function StudentRegistration() {
     sclassName: "" // Initialize sclassName in user state
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const classDetailsResponse = await axios.get(
-          `http://localhost:5001/users/Sclass/${classID}`
-        );
-        setSclassName(classDetailsResponse.data.sclassName);
-        const sclassListResponse = await axios.get(
-          `http://localhost:5001/users/SclassList`
-        );
-        setSclassesList(sclassListResponse.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [classID]);
-
-  useEffect(() => {
-    if (!token) {
-      console.error("No token found");
-      return;
-    }
-
-    axios
-      .get("http://localhost:5001/users/current", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setUserData(response.data);
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 401) {
-          localStorage.removeItem("accessToken");
-          localStorage.removeItem("user");
-          navigate("/");
-        }
-      });
-  }, [token, navigate]);
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser((prevUser) => ({
@@ -99,60 +60,58 @@ function StudentRegistration() {
     }));
   };
 
-  const changeHandler = (event) => {
-    const selectedValue = event.target.value;
-    if (selectedValue === "Select Class") {
-      setClassName("Select Class");
-      setUser((prevUser) => ({
-        ...prevUser,
-        sclassName: ""  // Set sclassName to empty string or null when "Select Class" is chosen
-      }));
-    } else {
-      const selectedClass = sclassesList.find(
-        (classItem) => classItem.sclassName === selectedValue
-      );
-      if (selectedClass) {
-        setClassName(selectedClass.sclassName);
-        setUser((prevUser) => ({
-          ...prevUser,
-          sclassName: selectedClass._id  // Assuming selectedClass has an _id field
-        }));
+ 
+  useEffect(() => {
+    const fetchSubjectDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5001/users/Subject/${subjectID}`);
+        setSubjectDetails(response.data);
+      } catch (error) {
+        console.error('Error fetching subject details:', error);
+        // Handle error (e.g., setSubjectDetails(null), show error message)
       }
-    }
-  };
-  
+    };
 
-  const registerUser = async () => {
+    fetchSubjectDetails();
+  }, [subjectID]);
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    setLoader(true);
+
     try {
-      const response = await axios.post(
-        "http://localhost:5001/users/register",
-        user
-      );
-      console.log("Registration successful:", response.data);
-      window.alert("User registered successfully!");
-      // Redirect to a success page or perform other actions after registration
+     
+
+      const response = await axios.post('http://localhost:5001/users/register', {user, fields});
+      console.log('User registered successfully:', response.data);
+
+      setLoader(false);
+      setShowPopup(true);
+      setMessage('Teacher added successfully');
+      
+      // Optionally, you can navigate here after successful registration
+      navigate("/Admin/teachers");
     } catch (error) {
-      console.error("Error during registration:", error);
-      if (error.response) {
-        console.error("Response data:", error.response.data);
-        console.error("Response status:", error.response.status);
-      }
-      // Handle error (e.g., show an error message to the user)
+      console.error('Error registering teacher:', error);
+      setLoader(false);
+      setShowPopup(true);
+      setMessage(error.message || 'Failed to add teacher');
     }
   };
 
   return (
-    <div className="register-body">
-      <div className="sidebar">
-        <Navbar />
-      </div>
-      <div className="dbcwibc">
-        <h1>User Registration</h1>
-        <div className="registration-container">
-          <div className="partition">
-            <div className="userInfo">
-              <h3>User Information</h3>
-              <div className="specificInfo">
+    <div>
+      <div className="register">
+        <form className="registerForm" onSubmit={submitHandler}>
+          <span className="registerTitle">Add Teacher</span>
+          <br />
+          <label>
+            Subject : {subjectDetails && subjectDetails.subName}
+          </label>
+          <label>
+            Class : {subjectDetails && subjectDetails.sclassName && subjectDetails.sclassName.sclassName}
+          </label>
+         
                 <label htmlFor="fullName">Full Name</label>
                 <input
                   type="text"
@@ -162,24 +121,10 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div>
-                <label>Class</label>
-                <select
-                  className="registerInput"
-                  value={className}
-                  onChange={changeHandler}
-                  required
-                >
-                  <option value="Select Class">Select Class</option>
-                  {sclassesList.map((classItem, index) => (
-                    <option key={index} value={classItem.sclassName}>
-                      {classItem.sclassName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="specificInfo">
+              
+              
+               
+           
                 <label htmlFor="rollNum">Roll Number</label>
                 <input
                   type="text"
@@ -188,8 +133,7 @@ function StudentRegistration() {
                   value={user.rollNum}
                   onChange={handleInputChange}
                 />
-              </div>
-              <div className="specificInfo">
+              
                 <label htmlFor="dateOfBirth">Date of birth</label>
                 <input
                   type="date"
@@ -199,8 +143,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+              
                 <label htmlFor="gender">Gender</label>
                 <input
                   type="text"
@@ -210,8 +153,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+             
                 <label>School Name</label>
                 <input
                   type="text"
@@ -221,18 +163,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
-                <label>Role</label>
-                <input
-                  type="text"
-                  name="role"
-                  value={user.role}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="specificInfo">
+              
                 <label htmlFor="contactNumber">Contact Number</label>
                 <input
                   type="tel"
@@ -242,8 +173,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+              
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
@@ -253,8 +183,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+              
                 <label htmlFor="nationality">Nationality</label>
                 <input
                   type="text"
@@ -264,7 +193,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
+              
               <label htmlFor="identificationNumber">
                 Identification Number
               </label>
@@ -276,7 +205,7 @@ function StudentRegistration() {
                 onChange={handleInputChange}
                 required
               />
-              <div className="specificInfo">
+              
                 <label htmlFor="previousSchool">Previous School</label>
                 <input
                   type="text"
@@ -286,10 +215,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-            </div>
-
-            <div className="useradress">
+             
               <h3>User Address</h3>
 
               <input
@@ -301,8 +227,7 @@ function StudentRegistration() {
                 onChange={handleInputChange}
                 required
               />
-              <div className="specificInfo">
-                <input
+                             <input
                   type="text"
                   id="state"
                   name="state"
@@ -311,8 +236,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+             
                 <input
                   type="text"
                   id="city"
@@ -322,8 +246,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+         
                 <input  
                   type="text"
                   id="zip"
@@ -333,11 +256,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-            </div>
-          </div>
-          <div className="partition">
-            <div className="parent-Information">
+             
               <h3>Parent Information</h3>
               <label htmlFor="pgname">Parent/Guardian Name</label>
               <input
@@ -348,7 +267,7 @@ function StudentRegistration() {
                 onChange={handleInputChange}
                 required
               />
-              <div className="specificInfo">
+              
                 <label htmlFor="pgrelationship">
                   Relationship with Parent/Guardian
                 </label>
@@ -360,8 +279,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+          
                 <label htmlFor="pgcontactNumber">
                   Parent/Guardian Contact Number:
                 </label>
@@ -373,8 +291,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+           
                 <label htmlFor="pgemail">Parent/Guardian Email</label>
                 <input
                   type="email"
@@ -384,8 +301,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+             
                 <label htmlFor="pgstreet">Parent/Guardian Address</label>
                 <input
                   type="text"
@@ -396,8 +312,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+       
                 <input
                   type="text"
                   id="pgCity"
@@ -407,8 +322,7 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+              
                 <input
                   type="text"
                   id="pgState"
@@ -418,8 +332,8 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="specificInfo">
+              
+              
                 <input
                   type="text"
                   id="pgzip"
@@ -429,10 +343,9 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-            </div>
+              
 
-            <div className="useraccount">
+            
               <h3>User Account</h3>
               <label htmlFor="accountusername">Username</label>
               <input
@@ -443,7 +356,7 @@ function StudentRegistration() {
                 onChange={handleInputChange}
                 required
               />
-              <div className="specificInfo">
+             
                 <label htmlFor="accountpassword">Password</label>
                 <input
                   type="text"
@@ -453,14 +366,9 @@ function StudentRegistration() {
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <button className="button" type="button" onClick={registerUser}>
-                Register Student
-              </button>
-            </div>
-          </div>
+              
 
-          <div>
+        
             <input
               type="hidden"
               id="school"
@@ -468,11 +376,21 @@ function StudentRegistration() {
               value={user.adminID}
               required
             />
-          </div>
-        </div>
+         
+       
+
+          <button className="registerButton" type="submit" disabled={loader}>
+            {loader ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              'Register'
+            )}
+          </button>
+        </form>
       </div>
+      
     </div>
   );
-}
+};
 
-export default StudentRegistration;
+export default AddTeacher;
