@@ -11,20 +11,25 @@
 
 input{
     height: 2.5rem;
-    width: 12rem;
-    border: 1px solid darkgray;
+    width: 18rem;
+    border: 0px solid ;
     border-radius: 5px;
     padding: 0rem 1rem;
     font-family: "Montserrat", sans-serif;
+    background-color: #f0f0f0a3;
+    color: #444252;
+    font-weight: 400;
 }
-
+.login-container-two {
+    width: 20rem;
+}
 label{
     color: darkgray ;
 }
 .login-background{
     display: flex;
     flex-direction: row;
-    height: 64vh;
+    height: 100vh;
     border-radius: 20px;
 }
 .y{
@@ -39,14 +44,19 @@ label{
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-    width: 14rem;
+    width: 20rem;
 }
-
+.button-two{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
 .button button{
-    width: 14rem;
+    width: 20rem;
     height: 2.5rem;
     border-radius: 10px;
-    border: 1px solid darkgray;
+    border: 0px solid darkgray;
     color: white;
     cursor: pointer;
     background-color: #444252;
@@ -54,28 +64,32 @@ label{
 
 }
 
-.login_image img {
+.login-header img {
     display: block;
-
-    max-width: 100%;
-    max-height: 100%;
-    opacity: 0.6;
-    height: 61vh;
-    width: 100vh;
-    border-radius: 20px;
-    filter: grayscale(70%);
+    object-fit: cover;
+    height: 90vh;
+    width: 92.5vh;
+    
+}
+.login-header{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    justify-content: center;
+    align-items: center;
 }
 p{
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
-    color: darkgray;
+    color: #444252;
     margin: 0rem;
+    font-weight: 600;
     
 }
 h3{
     font-family: "Montserrat", sans-serif;
     font-size: 2rem;
-    color: darkgray;
+    color: #444252;
     
 }
 .login-wrapper h1{
@@ -92,9 +106,7 @@ h3{
     display: flex;
     flex-direction: column;
     flex: 1 1;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem;
+   
     
 }
 .login-wrapper{

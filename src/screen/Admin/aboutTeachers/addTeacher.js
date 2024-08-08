@@ -21,7 +21,7 @@ const AddTeacher = () => {
   const school = subjectDetails && subjectDetails.school;
   const teachSubject = subjectDetails && subjectDetails._id;
   const teachSclass = subjectDetails && subjectDetails.sclassName && subjectDetails.sclassName._id;
-  const fields = { school, teachSubject, teachSclass }
+ 
   const [user, setUser] = useState({
     fullName: "",
     dateOfBirth: "",
@@ -47,9 +47,9 @@ const AddTeacher = () => {
     previousSchool: "",
     accountusername: "",
     accountpassword: "",
-    rollNum: "",
+  
     adminID: "665b893fbd4f7af08b321eb8",
-    sclassName: "" // Initialize sclassName in user state
+    
   });
 
   const handleInputChange = (event) => {
@@ -82,7 +82,11 @@ const AddTeacher = () => {
     try {
      
 
-      const response = await axios.post('http://localhost:5001/users/register', {user, fields});
+      const response = await axios.post('http://localhost:5001/users/register', {
+        ...user, 
+        teachSclass,
+        teachSubject
+      });
       console.log('User registered successfully:', response.data);
 
       setLoader(false);
@@ -125,14 +129,6 @@ const AddTeacher = () => {
               
                
            
-                <label htmlFor="rollNum">Roll Number</label>
-                <input
-                  type="text"
-                  id="rollNum"
-                  name="rollNum"
-                  value={user.rollNum}
-                  onChange={handleInputChange}
-                />
               
                 <label htmlFor="dateOfBirth">Date of birth</label>
                 <input

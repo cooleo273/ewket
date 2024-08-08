@@ -10,6 +10,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import { tokens } from "./theme";
+import { BrownButton } from "./buttonStyles";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -19,7 +20,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.grey[100] }}
+      style={{ color: colors.grey[900] }}
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
@@ -76,7 +77,7 @@ const Navbar = () => {
           backgroundColor: "transparent !important",
           color: "#00ff9c",
           marginTop: "1rem",
-        },
+        },        
         "& .pro-inner-item": {
           padding: "5px 35px 5px 20px !important",
           display: "flex",
@@ -99,7 +100,7 @@ const Navbar = () => {
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
-            style={{ margin: "0px 0 0px 0", color: colors.grey[100] }}
+            style={{ margin: "0px 0 0px 0", color: colors.grey[900] }}
           >
             {!isCollapsed && (
               <Box
@@ -122,7 +123,7 @@ const Navbar = () => {
               <Box textAlign="center">
                 <Typography
                   variant="h5"
-                  color={colors.grey[100]}
+                  color={colors.grey[900]}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
@@ -170,8 +171,8 @@ const Navbar = () => {
             selected={selected}
             setSelected={setSelected}
           />
-          <div className="button">
-            <button onClick={logout}>logout</button>
+          <div className="button-two">
+            <BrownButton onClick={logout}>logout</BrownButton>
           </div>
         </Menu>
       </Sidebar>

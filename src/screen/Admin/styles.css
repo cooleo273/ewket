@@ -113,13 +113,39 @@ h1{
 }
 .main-cards{
     display: flex;
+    gap: 5rem;
 }
 .card{
     flex: 1;
+    background-color: #534ea6;
+    border-radius: 10px;
+}
+.card-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    gap: 1rem;
+    
+}
+.card-inner h1{
+    margin: 0rem;
+    font-size: 1.3rem;
+    color: white;
+}
+.card-inner h3{
+    margin: 0rem;
+    font-size: 1.1rem !important;
+    color: white;
+    
 }
 
 .sidebar .button button{
     margin-top: 2rem;
+}
+.card_icon{
+    color: white;
 }
 
 .MuiBox-root .css-d2znx6{
