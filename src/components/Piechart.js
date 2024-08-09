@@ -19,14 +19,14 @@ const PieChart = () => {
       const labels = ['Students', 'Teachers', 'Admins'];
       const data = [student, teacher, admin];
       const backgroundColor = [
+        '#DFEDF8',
+        '#FBEDD9',
+        '#DAF7E8',
+      ];
+      const borderColor = [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(75, 192, 192, 0.2)',
-      ];
-      const borderColor = [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(75, 192, 192, 1)',
       ];
 
         setChartData({
@@ -53,7 +53,7 @@ const PieChart = () => {
     return <div>Loading...</div>;
   }
 
-  return <div style={{ width: '400px', height: '400px' }}><Pie data={chartData} /></div>;
+  return <div style={{ width: '300px', height: '300px', backgroundColor: "white", borderRadius: "20px" }}><Pie data={chartData} /></div>;
 };
 
 export default PieChart;

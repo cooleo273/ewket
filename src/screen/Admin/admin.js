@@ -10,6 +10,8 @@ import axios from "axios";
 import Topbar from "../../components/Topbar";
 import Navbar from "../../components/Navbar";
 import "./styles.css";
+import BarChart from "../../components/BarChart";
+import BarCharttwo from "../../components/BarChartTwo";
 
 function Admin() {
   const [usernumber, setUserNumber] = useState(null);
@@ -51,51 +53,60 @@ function Admin() {
           <div className="main-cards">
             <div className="card">
               <div className="card-inner">
-                <BsFillArchiveFill className="card_icon" />
-                <h3>Total Users</h3>
+                <div className="pentagon">
+                  <BsFillArchiveFill className="card_icon" />
+                </div>
+                <p>Total Users</p>
                 <h1>{usernumber}</h1>
               </div>
             </div>
-            <div className="card">
+            <div className="card two">
               <div className="card-inner">
-                <BsFillGrid3X3GapFill className="card_icon" />
-                <h3>Total Students</h3>
+                <div className="pentagon">
+                  <BsFillGrid3X3GapFill className="card_icon" />
+                </div>
+
+                <p>Total Students</p>
                 <h1>{studentnumber}</h1>
               </div>
             </div>
-            <div className="card">
+            <div className="card three">
               <div className="card-inner">
-                <BsPeopleFill className="card_icon" />
-                <h3>TEACHERS</h3>
+                <div className="pentagon">
+                  <BsPeopleFill className="card_icon" />
+                </div>
+
+                <p>Total Teachers</p>
                 <h1>{teachernumber}</h1>
               </div>
             </div>
-            <div className="card">
+            <div className="card four">
               <div className="card-inner">
-                <BsFillBellFill className="card_icon" />
-                <h3>ALERTS</h3>
+                <div className="pentagon">
+                  <BsFillBellFill className="card_icon" />
+                </div>
+
+                <p>ALERTS</p>
                 <h1>42</h1>
               </div>
+
             </div>
+            <div className="donught-chart">
+          <BarChart/>
+          </div>
           </div>
         </main>
         <div className="content">
-          <div className="text">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
           <div
             className="pie-chart"
-            style={{ width: "400px", height: "400px" }}
+            style={{ width: "300px", height: "300px" }}
           >
             <PieChart className="pie-chart-wrapper" />
+            
+          </div>
+          <div className="bar-chart">
+            <BarCharttwo/>
+            
           </div>
         </div>
       </div>

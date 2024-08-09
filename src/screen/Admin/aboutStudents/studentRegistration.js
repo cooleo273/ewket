@@ -163,7 +163,7 @@ function StudentRegistration() {
                   required
                 />
               </div>
-              <div>
+              <div className="specificInfo">
                 <label>Class</label>
                 <select
                   className="registerInput"
@@ -265,6 +265,7 @@ function StudentRegistration() {
                   required
                 />
               </div>
+              <div className="specificInfo">
               <label htmlFor="identificationNumber">
                 Identification Number
               </label>
@@ -276,6 +277,7 @@ function StudentRegistration() {
                 onChange={handleInputChange}
                 required
               />
+              </div>
               <div className="specificInfo">
                 <label htmlFor="previousSchool">Previous School</label>
                 <input
@@ -290,6 +292,7 @@ function StudentRegistration() {
             </div>
 
             <div className="useradress">
+              <div className="specificInfo">
               <h3>User Address</h3>
 
               <input
@@ -301,6 +304,7 @@ function StudentRegistration() {
                 onChange={handleInputChange}
                 required
               />
+              </div>
               <div className="specificInfo">
                 <input
                   type="text"
@@ -338,6 +342,7 @@ function StudentRegistration() {
           </div>
           <div className="partition">
             <div className="parent-Information">
+              <div className="specificInfo">
               <h3>Parent Information</h3>
               <label htmlFor="pgname">Parent/Guardian Name</label>
               <input
@@ -347,7 +352,7 @@ function StudentRegistration() {
                 value={user.pgname}
                 onChange={handleInputChange}
                 required
-              />
+              /></div>
               <div className="specificInfo">
                 <label htmlFor="pgrelationship">
                   Relationship with Parent/Guardian
@@ -433,6 +438,7 @@ function StudentRegistration() {
             </div>
 
             <div className="useraccount">
+              <div className="specificInfo">
               <h3>User Account</h3>
               <label htmlFor="accountusername">Username</label>
               <input
@@ -443,6 +449,7 @@ function StudentRegistration() {
                 onChange={handleInputChange}
                 required
               />
+              </div>
               <div className="specificInfo">
                 <label htmlFor="accountpassword">Password</label>
                 <input

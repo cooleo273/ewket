@@ -16,9 +16,14 @@ input{
     border-radius: 5px;
     padding: 0rem 1rem;
     font-family: "Montserrat", sans-serif;
-    background-color: #f0f0f0a3;
+    background-color: white;
     color: #444252;
     font-weight: 400;
+}
+.registerInput{
+    width: 16rem;
+    height: 2.5rem;
+    border: none;
 }
 .login-container-two {
     width: 20rem;
@@ -50,7 +55,7 @@ label{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 13rem;
 }
 .button button{
     width: 20rem;
