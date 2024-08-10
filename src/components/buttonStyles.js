@@ -48,7 +48,7 @@ export const BlueButton = styled(Button)`
     border: 1px solid darkgray; 
     font-family: "Montserrat", sans-serif;
     font-size: 11px;
-    width: 10rem;
+    width: 20rem;
      &:hover {
       background-color: #444252 !important;
       

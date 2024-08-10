@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import axios from "axios";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -12,37 +12,39 @@ const PieChart = () => {
     // Replace with your API endpoint
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/users/row-count');
-      const { student, teacher, admin} = response.data;
+        const response = await axios.get(
+          "http://localhost:5001/users/row-count"
+        );
+        const { student, teacher, admin } = response.data;
 
-      // Process API data to match chart data format
-      const labels = ['Students', 'Teachers', 'Admins'];
-      const data = [student, teacher, admin];
-      const backgroundColor = [
-        '#DFEDF8',
-        '#FBEDD9',
-        '#DAF7E8',
-      ];
-      const borderColor = [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-      ];
+        // Process API data to match chart data format
+        const labels = ["Students", "Teachers", "Admins"];
+        const data = [student, teacher, admin];
+        const backgroundColor = [
+          "rgba(54, 162, 235, 0.7)",
+          "rgba(255, 159, 64, 0.7)",
+          "rgba(75, 192, 192, 0.7",
+        ];
+        const borderColor = [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+        ];
 
         setChartData({
           labels: labels,
           datasets: [
             {
-              label: 'users',
+              label: "users",
               data: data,
               backgroundColor: backgroundColor,
-            borderColor: borderColor,
+              borderColor: borderColor,
               borderWidth: 1,
             },
           ],
         });
       } catch (error) {
-        console.error('Error fetching the data', error);
+        console.error("Error fetching the data", error);
       }
     };
 
@@ -53,7 +55,26 @@ const PieChart = () => {
     return <div>Loading...</div>;
   }
 
-  return <div style={{ width: '300px', height: '300px', backgroundColor: "white", borderRadius: "20px" }}><Pie data={chartData} /></div>;
+  return (
+    <div
+      style={{
+        width: "300px",
+        height: "300px",
+        borderRadius: "20px",
+      }}
+    >
+      <h4 style={{
+        
+        
+        fontWeight: "bold",
+        color: "black",
+        padding: "1rem 2rem 0rem"
+        
+        
+      }}>Users</h4>
+      <Pie data={chartData} />
+    </div>
+  );
 };
 
 export default PieChart;

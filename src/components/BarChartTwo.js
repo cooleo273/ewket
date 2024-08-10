@@ -14,13 +14,13 @@ const BarCharttwo = () => {
         label: 'Monthly Sales',
         data: [65, 59, 80, 81, 56, 55, 40], // Data points for each label
         backgroundColor: [
-          'rgba(255, 99, 132, 1)', // Color for January
-          'rgba(54, 162, 235, 1)', // Color for February
-          'rgba(255, 206, 86, 1)', // Color for March
-          'rgba(75, 192, 192, 1)', // Color for April
-          'rgba(153, 102, 255, 1)', // Color for May
-          'rgba(255, 159, 64, 1)', // Color for June
-          'rgba(255, 99, 132, 1)'  // Color for July (repeat for demonstration)
+          'rgba(255, 99, 132, 0.7)', // Color for January
+          'rgba(54, 162, 235, 0.7)', // Color for February
+          'rgba(255, 206, 86, 0.7)', // Color for March
+          'rgba(75, 192, 192, 0.7)', // Color for April
+          'rgba(153, 102, 255, 0.7)', // Color for May
+          'rgba(255, 159, 64, 0.7)', // Color for June
+          'rgba(255, 99, 132, 0.7)'  // Color for July (repeat for demonstration)
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)', // Border color for January
@@ -77,7 +77,7 @@ const BarCharttwo = () => {
 
   return (
     <div>
-      
+      <h4>Expenses</h4>
       <Bar data={data} options={options} />
     </div>
   );

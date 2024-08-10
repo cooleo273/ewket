@@ -28,9 +28,7 @@ input{
 .login-container-two {
     width: 20rem;
 }
-label{
-    color: darkgray ;
-}
+
 .login-background{
     display: flex;
     flex-direction: row;

@@ -23,12 +23,13 @@ p{
 }
 .view-create-button{
     display: flex;
-    gap: 4rem;
+    gap: 1rem;
 }
 .content{
-    width: 300px;
+    
     display: flex;
     gap: 2rem;
+    padding: 2rem;
 }
 .css-y0u0hj{
     padding: 1rem 0rem !important;
@@ -49,7 +50,12 @@ p{
     padding: 1rem;
 }
 .pie-chart canvas{
-    padding: 2rem;
+    padding: 0rem 1rem 2rem ;
+}
+.pie-chart{
+    background-color: #ffffff;
+    border-radius: 20px;
+    height: 385px !important;
 }
 .bar-chart canvas{
     width: 520px !important;
@@ -158,17 +164,18 @@ h1{
 }
 .card{
     flex: 1;
-    background-color: #534ea6;
+    background-color: rgba(153, 102, 255, 0.7);
     border-radius: 10px;
 }
 .card.two{
-    background-color: #DFEDF8;
+   background-color: rgba(54, 162, 235, 0.7); 
 }
 .card.three{
-    background-color: #FBEDD9;
+    
+    background-color: rgba(255, 159, 64, 0.7);
 }
 .card.four{
-    background-color: #DAF7E8;
+    background-color: rgba(75, 192, 192, 0.7);
 }
 .pentagon {
     position: relative;
@@ -225,4 +232,8 @@ form{
     padding: 3rem;
     display: flex;
     flex-direction: column;
+}
+
+.css-nnsfc0-MuiTypography-root{
+    font-weight: 500 !important;
 }
