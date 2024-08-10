@@ -51,9 +51,14 @@ input{
 }
 .button-two{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 13rem;
+    margin-left: 1.5rem;
+    gap: 0.5em;
+    margin-top: 3rem;
+    align-items: flex-end;
+}
+.button-two img{
+    width: 20px;
+    height: 20px;
 }
 .button button{
     width: 20rem;

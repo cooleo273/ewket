@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navbar from '../../components/Navbar';
 
 const Teacher = () => {
   const [teacherData, setTeacherData] = useState(null);
@@ -31,10 +32,7 @@ const Teacher = () => {
 
   return (
     <div>
-      <h1>Teacher Profile</h1>
-      <p>Name: {teacherData.username}</p>
-      <p>Email: {teacherData.email}</p>
-      {/* Render other teacher details here */}
+      <Navbar/>
     </div>
   );
 };

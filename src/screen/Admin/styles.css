@@ -118,15 +118,21 @@ h1, h3, h4{
 }
 .register-body{
     display: flex;
+    height: 100vh;
 }
 .css-ewdv3l{
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 .dbcwibc{
     flex: 1;
     padding: 2rem 4rem;
     background-color: #f9f9f9;
+    overflow-y: scroll;
 }
+
 button{
     
     border: 1px solid darkgray;
@@ -225,7 +231,7 @@ h1{
 .MuiBox-root .css-d2znx6{
     display: flex;
     margin-top: 2rem;
-    justify-content: center;
+    margin-left: 2rem;
 
 }
 form{
