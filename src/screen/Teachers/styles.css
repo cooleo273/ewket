@@ -1,0 +1,23 @@
+.teachers-profile{
+    display: flex;
+    height: 100vh;
+    
+}
+.teacher-dashboard{
+    overflow-y: scroll;
+    background-color: rgb(247, 247, 247);
+}
+
+.css-phar5h-MuiPaper-root{
+    border-radius: 10px;
+}
+
+.css-1yqr9nu{
+    display: flex;
+    justify-content: center;
+}
+
+.css-zow5z4-MuiGrid-root{
+    margin-top: 1rem;
+    padding: 2rem;
+}

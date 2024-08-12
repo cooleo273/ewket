@@ -58,10 +58,15 @@ export const BlueButton = styled(Button)`
 
 export const PurpleButton = styled(Button)`
   && {
-    background-color: #270843;
-    color: #fff;
+    background-color: #444252;
+    color: white;
+    width: 10rem;
+    font-family: montserrat;
+    margin: 1rem 1rem 0rem 0rem;
     &:hover {
-      background-color: #3f1068;
+      background-color: #534ea6;
+      border-color: #473d90;
+      box-shadow: none;
     }
   }
 `;
@@ -77,11 +82,19 @@ export const LightPurpleButton = styled(Button)`
 `;
 
 export const GreenButton = styled(Button)`
-  && {
-    background-color: #133104;
-    color: #fff;
+ && {
+    background-color: #444252;
+    color: white;
+    width: 15rem;
+    font-family: montserrat;
+    font-size: 0.7rem;
+    height: 2rem;
+    border-radius: 10px;
+    margin-left: 1rem;
     &:hover {
-      background-color: #266810;
+      background-color: #534ea6;
+      border-color: #473d90;
+      box-shadow: none;
     }
   }
 `;
@@ -92,6 +105,9 @@ export const BrownButton = styled(Button)`
     color: white;
     width: 10rem;
     font-family: montserrat;
+    font-size: 11px;
+    border-radius: 10px;
+    height: 2rem;
     &:hover {
       background-color: #534ea6;
       border-color: #473d90;

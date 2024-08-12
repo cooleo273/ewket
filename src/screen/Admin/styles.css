@@ -234,6 +234,16 @@ h1{
     margin-left: 2rem;
 
 }
+.css-67bhig-MuiTableCell-root.MuiTableCell-head{
+    background-color: #444252 !important;
+}
+.css-86ysqi-MuiTableCell-root.MuiTableCell-head{
+    background-color: #444252 !important;
+}
+.css-132a6sb-MuiTableCell-root.MuiTableCell-body {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+}
 form{
     padding: 3rem;
     display: flex;

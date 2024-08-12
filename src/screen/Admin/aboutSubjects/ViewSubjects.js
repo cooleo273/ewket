@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Box, Tab, Container, Typography, BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
-import { BlueButton, GreenButton, PurpleButton } from '../../../components/buttonStyles';
+import { BlueButton, BrownButton, GreenButton, PurpleButton } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/Tabletemplate';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -65,18 +65,18 @@ const ViewSubject = () => {
   const StudentsAttendanceButtonHaver = ({ row }) => {
     return (
       <>
-        <BlueButton
+        <BrownButton
           variant="contained"
           onClick={() => navigate(`/Admin/students/student/${row.id}`)}
         >
           View
-        </BlueButton>
-        <PurpleButton
+        </BrownButton>
+        <GreenButton
           variant="contained"
           onClick={() => navigate(`/Admin/subject/student/attendance/${row.id}/${subjectID}`)}
         >
           Take Attendance
-        </PurpleButton>
+        </GreenButton>
       </>
     );
   };

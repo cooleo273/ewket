@@ -92,14 +92,14 @@ const ClassDetails = () => {
                 <IconButton onClick={() => deleteHandler(row.id, "Subject")}>
                     <DeleteIcon color="error" />
                 </IconButton>
-                <BlueButton
+                <GreenButton
                     variant="contained"
                     onClick={() => {
                         navigate(`/admin/class/subject/${classID}/${row.id}`)
                     }}
                 >
                     View
-                </BlueButton >
+                </GreenButton >
             </>
         );
     };
@@ -119,7 +119,7 @@ const ClassDetails = () => {
         return (
             <>
                 <Typography variant="h5" gutterBottom>
-                    Subjects List:
+                    Subjects List
                 </Typography>
 
                 <TableTemplate buttonHaver={SubjectsButtonHaver} columns={subjectColumns} rows={subjectRows} />
@@ -157,14 +157,14 @@ const ClassDetails = () => {
                 >
                     View
                 </BlueButton>
-                <PurpleButton
+                <GreenButton
                     variant="contained"
                     onClick={() =>
                         navigate("/Admin/students/student/attendance/" + row.id)
                     }
                 >
                     Attendance
-                </PurpleButton>
+                </GreenButton>
             </>
         );
     };
@@ -186,7 +186,7 @@ const ClassDetails = () => {
                 {studentRows.length > 0 ? (
                     <>
                         <Typography variant="h5" gutterBottom>
-                            Students List:
+                            Students List
                         </Typography>
                         <TableTemplate buttonHaver={StudentsButtonHaver} columns={studentColumns} rows={studentRows} />
                         <SpeedDialTemplate actions={studentActions} />
@@ -214,7 +214,7 @@ const ClassDetails = () => {
                     Class Details
                 </Typography>
                 <Typography variant="h5" gutterBottom>
-                    This is Class {sclassDetails && sclassDetails.sclassName}
+                     {sclassDetails && sclassDetails.sclassName}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                     Number of Subjects: {numberOfSubjects}
@@ -223,20 +223,20 @@ const ClassDetails = () => {
                     Number of Students: {numberOfStudents}
                 </Typography>
                 
-                    <GreenButton
+                    <PurpleButton
                         variant="contained"
                         onClick={() => navigate("/admin/class/addstudents/" + classID)}
                     >
                         Add Students
-                    </GreenButton>
+                    </PurpleButton>
                 
                 
-                    <GreenButton
+                    <PurpleButton
                         variant="contained"
                         onClick={() => navigate("/Admin/addsubject/" + classID)}
                     >
                         Add Subjects
-                    </GreenButton>
+                    </PurpleButton>
                     
             </>
         );

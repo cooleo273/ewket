@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
+import TeacherDashboard from './TeachersDashboard';
+import "./styles.css"
 
 const Teacher = () => {
   const [teacherData, setTeacherData] = useState(null);
@@ -31,8 +33,9 @@ const Teacher = () => {
   }
 
   return (
-    <div>
+    <div className='teachers-profile'>
       <Navbar/>
+      <TeacherDashboard/>
     </div>
   );
 };

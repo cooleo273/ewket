@@ -6,12 +6,15 @@ import { Sidebar, Menu } from "react-pro-sidebar";
 import { Box, IconButton, useTheme } from "@mui/material";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import SchoolIcon from '@mui/icons-material/School';
-
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import LogoutIcon from '@mui/icons-material/Logout';
+
 import { tokens } from "./theme";
+import PeopleIcon from '@mui/icons-material/People';
 import { BrownButton } from "./buttonStyles";
 import img from "../assets/7124045_logout_icon.png";
 import Item from './Item'; // Make sure to import the Item component
@@ -126,6 +129,26 @@ const Navbar = () => {
               setSelected={setSelected}
               isCollapsed={isCollapsed} // Pass isCollapsed
             />}
+             {user.role === "teacher" &&
+            <Item
+              title="Reports"
+              to="/teachers"
+              icon={<AssessmentIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed} // Pass isCollapsed
+            />
+            }
+             {user.role === "teacher" &&
+            <Item
+              title="Students"
+              to="/teachers"
+              icon={<PeopleIcon  />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed} // Pass isCollapsed
+            />
+            }
           
           <Item
             title="Attendance"
@@ -151,12 +174,15 @@ const Navbar = () => {
             setSelected={setSelected}
             isCollapsed={isCollapsed} // Pass isCollapsed
           />
-          <div className="button-two">
-            <img src={img} alt="logout"/>
-            <a style={{
-              cursor: "pointer"
-            }} onClick={logout}>Logout</a>
-          </div>
+           <Item
+            title="Logout"
+            onClick={logout}
+            icon={<LogoutIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            isCollapsed={isCollapsed} // Pass isCollapsed
+          />
+          
         </Menu>
       </Sidebar>
     </Box>
